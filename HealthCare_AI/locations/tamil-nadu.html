@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamil Nadu Health Centers - HealthCare Plus</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body { background: #f9f9f9; font-family: Arial, sans-serif; }
+    .state-page { padding: 2rem; max-width: 1200px; margin: auto; }
+    .state-page h1 { color: #0d6efd; margin-bottom: 1rem; }
+    .hospital-card {
+      background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.2s;
+    }
+    .hospital-card:hover { transform: translateY(-4px); }
+    .hospital-card h3 { color: #0d6efd; margin-bottom: .5rem; }
+    .hospital-card p { margin: .3rem 0; color: #333; }
+    .hospital-card iframe { width: 100%; height: 220px; border-radius: 10px; margin-top: .8rem; border: none; }
+    .district-select { margin: 1rem 0; padding: .5rem; border-radius: 8px; border: 1px solid #ccc; }
+    .btn { display: inline-block; margin-top: .5rem; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; }
+    .btn-primary { background: #0d6efd; color: #fff; }
+    .btn-primary:hover { background: #0b5ed7; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <i class="fas fa-heartbeat"></i>
+          <span>HealthCare Plus</span>
+        </div>
+        <div class="nav-menu">
+          <a href="../index.html">Home</a>
+          <a href="../doctor.html">Find Doctors</a>
+          <a href="../health-checkup.html">Health Checkup</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="state-page">
+    <h1>Tamil Nadu – Health Centers</h1>
+    <p>Select your district to view nearby hospitals serving rural and village communities in Tamil Nadu.</p>
+
+    <!-- District Selection -->
+    <label for="district"><strong>Select Your District:</strong></label>
+    <select id="district" class="district-select" onchange="filterHospitals()">
+      <option value="all">All</option>
+      <option value="chennai">Chennai</option>
+      <option value="coimbatore">Coimbatore</option>
+      <option value="madurai">Madurai</option>
+      <option value="tiruchirappalli">Tiruchirappalli</option>
+      <option value="salem">Salem</option>
+      <option value="tirunelveli">Tirunelveli</option>
+      <option value="erode">Erode</option>
+      <option value="vellore">Vellore</option>
+      <option value="thanjavur">Thanjavur</option>
+      <option value="kanyakumari">Kanyakumari</option>
+    </select>
+
+    <!-- Hospitals -->
+    <div id="hospital-list">
+
+      <!-- 1 Chennai -->
+      <div class="hospital-card" data-district="chennai">
+        <h3>Chennai Community Health Center</h3>
+        <p><strong>Location:</strong> T. Nagar, Chennai</p>
+        <p><strong>Contact:</strong> +91 9876543210</p>
+        <p><strong>Doctors:</strong> Dr. S. Ram (General), Dr. Priya Ramesh (Gynecology)</p>
+        <p><strong>Services:</strong> General medicine, maternal care, vaccination</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 2 Coimbatore -->
+      <div class="hospital-card" data-district="coimbatore">
+        <h3>Coimbatore Rural Hospital</h3>
+        <p><strong>Location:</strong> Gandhipuram, Coimbatore</p>
+        <p><strong>Contact:</strong> +91 9123456780</p>
+        <p><strong>Doctors:</strong> Dr. M. Krishnan (Pediatrics), Nurse Support 24x7</p>
+        <p><strong>Services:</strong> Child care, immunization, free medicines</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 3 Madurai -->
+      <div class="hospital-card" data-district="madurai">
+        <h3>Madurai Health & Wellness Center</h3>
+        <p><strong>Location:</strong> Near Meenakshi Temple, Madurai</p>
+        <p><strong>Contact:</strong> +91 9988776655</p>
+        <p><strong>Doctors:</strong> Dr. R. Sundar (Orthopedics), Dr. Kavitha (ENT)</p>
+        <p><strong>Services:</strong> Bone care, ENT checkups, diagnostics</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 4 Tiruchirappalli -->
+      <div class="hospital-card" data-district="tiruchirappalli">
+        <h3>Tiruchirappalli Primary Health Unit</h3>
+        <p><strong>Location:</strong> Rockfort Area, Trichy</p>
+        <p><strong>Contact:</strong> +91 8899776655</p>
+        <p><strong>Doctors:</strong> Dr. L. Meena (Gynecology), Dr. S. Arjun (General Physician)</p>
+        <p><strong>Services:</strong> Women’s health, OPD, general care</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 5 Salem -->
+      <div class="hospital-card" data-district="salem">
+        <h3>Salem Community Health Center</h3>
+        <p><strong>Location:</strong> Fairlands, Salem</p>
+        <p><strong>Contact:</strong> +91 7766554433</p>
+        <p><strong>Doctors:</strong> Dr. G. Kannan (Dermatology), Dr. Anitha S (General Medicine)</p>
+        <p><strong>Services:</strong> Skin care, outpatient, diagnostics</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 6 Tirunelveli -->
+      <div class="hospital-card" data-district="tirunelveli">
+        <h3>Tirunelveli Rural Health Center</h3>
+        <p><strong>Location:</strong> Palayamkottai, Tirunelveli</p>
+        <p><strong>Contact:</strong> +91 7001122334</p>
+        <p><strong>Doctors:</strong> Dr. A. Kumar (Neurology), Dr. Revathi (General Physician)</p>
+        <p><strong>Services:</strong> Neurology, rural OPD, medicine distribution</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 7 Erode -->
+      <div class="hospital-card" data-district="erode">
+        <h3>Erode District Hospital</h3>
+        <p><strong>Location:</strong> Perundurai Road, Erode</p>
+        <p><strong>Contact:</strong> +91 8112233445</p>
+        <p><strong>Doctors:</strong> Dr. R. Venkatesh (Cardiology), Dr. Shobha (General Medicine)</p>
+        <p><strong>Services:</strong> Cardiac care, diagnostics, emergency ward</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 8 Vellore -->
+      <div class="hospital-card" data-district="vellore">
+        <h3>Vellore Medical Aid Center</h3>
+        <p><strong>Location:</strong> Near CMC Hospital, Vellore</p>
+        <p><strong>Contact:</strong> +91 9556677889</p>
+        <p><strong>Doctors:</strong> Dr. Aarti N (Pediatrics), Dr. Manoj S (General Physician)</p>
+        <p><strong>Services:</strong> Pediatrics, immunization, free checkups</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 9 Thanjavur -->
+      <div class="hospital-card" data-district="thanjavur">
+        <h3>Thanjavur Community Hospital</h3>
+        <p><strong>Location:</strong> Near Big Temple, Thanjavur</p>
+        <p><strong>Contact:</strong> +91 7009988776</p>
+        <p><strong>Doctors:</strong> Dr. Meera C (Gynecology), Dr. Harish K (General Medicine)</p>
+        <p><strong>Services:</strong> Women’s health, emergency services, rural OPD</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 10 Kanyakumari -->
+      <div class="hospital-card" data-district="kanyakumari">
+        <h3>Kanyakumari Primary Health Center</h3>
+        <p><strong>Location:</strong> Near Vivekananda Rock, Kanyakumari</p>
+        <p><strong>Contact:</strong> +91 9122003344</p>
+        <p><strong>Doctors:</strong> Dr. Sanjay P (General), Dr. Kavitha S (Pediatrics)</p>
+        <p><strong>Services:</strong> Rural care, child health, vaccination</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function filterHospitals() {
+      const district = document.getElementById('district').value;
+      const hospitals = document.querySelectorAll('.hospital-card');
+      hospitals.forEach(hospital => {
+        if (district === "all" || hospital.dataset.district === district) {
+          hospital.style.display = "block";
+        } else {
+          hospital.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

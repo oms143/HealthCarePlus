@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Care - HealthCare Plus</title>
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f8fb;
+      color: #222;
+    }
+
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section h2 {
+      color: #0d6efd;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section p {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #444;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .card i {
+      font-size: 2rem;
+      color: #0d6efd;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin: 0.5rem 0;
+      color: #222;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: #fff;
+      background: #0d6efd;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+    }
+
+    .back-btn:hover {
+      background: #0b5ed7;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .modal-content h3 {
+      margin-bottom: 1rem;
+      color: #0d6efd;
+    }
+
+    .modal-content textarea,
+    .modal-content input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .close-btn {
+      background: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      background: #0d6efd;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background: #0b5ed7;
+    }
+
+    /* Call Modal Centered */
+#callModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#callModal .modal-content {
+  width: 80%;
+  max-width: 900px;
+  height: 80%;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#videoFrame {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.end-call-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo"><i class="fas fa-heartbeat"></i> <span>HealthCare Plus</span></div>
+        <div class="nav-menu">
+          <a href="../index.html" class="nav-item">Home</a>
+          <a href="../index.html#appointment-form" class="nav-item">Book Appointment</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Expanded First Aid Section -->
+    <section class="section">
+      <h2>🚑 First Aid Guide</h2>
+      <p>Quick steps to help in emergencies before reaching a hospital.</p>
+      <div class="cards">
+        <div class="card"><i class="fas fa-snake"></i>
+          <h3>Snake Bite</h3>
+          <p>Keep patient calm, tie above bite (not too tight), rush to hospital. Do not cut or suck.</p>
+        </div>
+        <div class="card"><i class="fas fa-burn"></i>
+          <h3>Burns</h3>
+          <p>Cool with running water, no oil/ghee. Cover with clean cloth.</p>
+        </div>
+        <div class="card"><i class="fas fa-tint"></i>
+          <h3>Diarrhea</h3>
+          <p>Give ORS/salt-sugar water. Keep hydrated. If severe, visit hospital.</p>
+        </div>
+        <div class="card"><i class="fas fa-cut"></i>
+          <h3>Cuts & Bleeding</h3>
+          <p>Wash, press with cloth, bandage. Get tetanus injection if deep.</p>
+        </div>
+        <div class="card"><i class="fas fa-dog"></i>
+          <h3>Dog Bite</h3>
+          <p>Wash with soap & water 15 mins, then visit hospital for rabies vaccine.</p>
+        </div>
+        <div class="card"><i class="fas fa-temperature-high"></i>
+          <h3>Fever</h3>
+          <p>Keep hydrated, rest. Use paracetamol. See doctor if persists.</p>
+        </div>
+        <div class="card"><i class="fas fa-child"></i>
+          <h3>Choking</h3>
+          <p>If child chokes, bend forward and pat back strongly between shoulder blades.</p>
+        </div>
+        <div class="card"><i class="fas fa-head-side-virus"></i>
+          <h3>Heat Stroke</h3>
+          <p>Move to cool place, sponge with wet cloth, give sips of water.</p>
+        </div>
+        <div class="card"><i class="fas fa-wind"></i>
+          <h3>Asthma Attack</h3>
+          <p>Help patient sit upright, use inhaler if available, rush to hospital if severe.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Virtual Consultation Section -->
+     <!-- <section class="section">
+      <h2>💻 Virtual Consultation</h2>
+      <p>Access healthcare services without traveling long distances.</p>
+      <div class="cards">
+        <div class="card">
+          <i class="fas fa-video"></i>
+          <h3>Video Consultation</h3>
+          <p>Connect live with doctors via video.</p>
+          <button onclick="openModal('videoModal')" class="submit-btn">Start</button>
+        </div> 
+    
+
+    <div class="card">
+      <i class="fas fa-phone"></i>
+      <h3>Phone Support</h3>
+      <p>Call our helpline <strong>+91 9876543210</strong> for quick advice.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-comments"></i>
+      <h3>Chat with Doctor</h3>
+      <p>Send messages and get quick replies.</p>
+      <button onclick="openModal('chatModal')" class="submit-btn">Chat Now</button>
+    </div>
+    </div>
+    </section> -->
+<!-- Virtual Consultation Section -->
+  <section class="section">
+    <h2>💻 Virtual Consultation</h2>
+    <p>Access healthcare services without traveling long distances.</p>
+
+    <div class="cards">
+      <!-- Card 1 -->
+      <div class="card">
+        <i class="fas fa-video"></i>
+        <h3>Video Consultation</h3>
+        <p>Connect live with doctors via video.</p>
+        <button onclick="openModal('videoModal')" class="submit-btn">Start</button>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <i class="fas fa-phone"></i>
+        <h3>Phone Support</h3>
+        <p>Call our helpline <strong>+91 9876543210</strong> for quick advice.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <i class="fas fa-comments"></i>
+        <h3>Chat with Doctor</h3>
+        <p>Send messages and get quick replies.</p>
+        <button onclick="openModal('chatModal')" class="submit-btn">Chat Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctor Selection Modal -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content" style="max-width:800px; height:auto;">
+      <span class="close" onclick="closeModal('videoModal')">&times;</span>
+      <h2 style="text-align:center;">Choose a Doctor</h2>
+
+      <div class="doctor-list">
+        <div class="doctor-card">
+          <h3>Dr. A Sharma</h3>
+          <p>General Physician</p>
+          <button onclick="startVideoCall('Dr_A_Sharma')" class="call-btn">
+            <i class="fas fa-video"></i> Video Call
+          </button>
+        </div>
+
+        <div class="doctor-card">
+          <h3>Dr. B Gupta</h3>
+          <p>Pediatrician</p>
+          <button onclick="startVideoCall('Dr_B_Gupta')" class="call-btn">
+            <i class="fas fa-video"></i> Video Call
+          </button>
+        </div>
+
+        <div class="doctor-card">
+          <h3>Dr. C Verma</h3>
+          <p>Cardiologist</p>
+          <button onclick="startVideoCall('Dr_C_Verma')" class="call-btn">
+            <i class="fas fa-video"></i> Video Call
+          </button>
+        </div>
+
+        <div class="doctor-card">
+          <h3>Dr. D Singh</h3>
+          <p>Dermatologist</p>
+          <button onclick="startVideoCall('Dr_D_Singh')" class="call-btn">
+            <i class="fas fa-video"></i> Video Call
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Call Modal -->
+  <div id="callModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="endCall()">&times;</span>
+      <iframe id="videoFrame" allow="camera; microphone"></iframe>
+      <button class="end-call-btn" onclick="endCall()">End Call</button>
+    </div>
+  </div>
+
+
+    <!-- Health Education -->
+    <section class="section">
+      <h2>📘 Health Education</h2>
+      <p>Basic health awareness to keep rural families safe and healthy.</p>
+      <div class="cards">
+        <div class="card"><i class="fas fa-hand-holding-water"></i>
+          <h3>Clean Drinking Water</h3>
+          <p>Boil/filter water before drinking to prevent diarrhea & cholera.</p>
+        </div>
+        <div class="card"><i class="fas fa-baby"></i>
+          <h3>Maternal Care</h3>
+          <p>Pregnant women should visit health centers regularly & take iron tablets.</p>
+        </div>
+        <div class="card"><i class="fas fa-syringe"></i>
+          <h3>Vaccination</h3>
+          <p>Ensure children are fully vaccinated against polio, measles, etc.</p>
+        </div>
+        <div class="card"><i class="fas fa-seedling"></i>
+          <h3>Nutrition</h3>
+          <p>Eat balanced meals with vegetables, grains & pulses.</p>
+        </div>
+        <div class="card"><i class="fas fa-soap"></i>
+          <h3>Hygiene</h3>
+          <p>Wash hands before meals & after using toilet to prevent infections.</p>
+        </div>
+        <div class="card"><i class="fas fa-tooth"></i>
+          <h3>Oral Health</h3>
+          <p>Brush teeth twice daily, avoid chewing tobacco & smoking.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expanded Rural Health Awareness -->
+    <section class="section">
+      <h2>🌾 Rural Health Awareness</h2>
+      <p>Special focus on village community well-being.</p>
+      <div class="cards">
+        <div class="card"><i class="fas fa-tractor"></i>
+          <h3>Farmer Safety</h3>
+          <p>Wear masks when spraying pesticides, wash hands properly.</p>
+        </div>
+        <div class="card"><i class="fas fa-brain"></i>
+          <h3>Mental Health</h3>
+          <p>Talk to family & friends, seek help if stressed or depressed.</p>
+        </div>
+        <div class="card"><i class="fas fa-female"></i>
+          <h3>Women & Child Care</h3>
+          <p>Ensure proper nutrition & regular check-ups for mothers & children.</p>
+        </div>
+        <div class="card"><i class="fas fa-bug"></i>
+          <h3>Mosquito Diseases</h3>
+          <p>Use mosquito nets, keep surroundings clean to prevent malaria & dengue.</p>
+        </div>
+        <div class="card"><i class="fas fa-smoking-ban"></i>
+          <h3>No Tobacco</h3>
+          <p>Avoid smoking & chewing tobacco to prevent cancer and lung disease.</p>
+        </div>
+        <div class="card"><i class="fas fa-users"></i>
+          <h3>Community Health</h3>
+          <p>Organize village cleanliness drives & health check-up camps.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Emergency Contacts -->
+    <section class="section">
+      <h2>📞 Emergency Numbers</h2>
+      <p>Save these important numbers for urgent medical needs.</p>
+      <div class="cards">
+        <div class="card"><i class="fas fa-ambulance"></i>
+          <h3>Ambulance</h3>
+          <p><strong>108</strong> – Free Govt ambulance service</p>
+        </div>
+        <div class="card"><i class="fas fa-phone-alt"></i>
+          <h3>Health Helpline</h3>
+          <p><strong>104</strong> – 24/7 health advice</p>
+        </div>
+        <div class="card"><i class="fas fa-hospital"></i>
+          <h3>Nearest Hospital</h3>
+          <p>Visit your closest district hospital or PHC</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back Button -->
+    <div style="text-align:center;">
+      <a href="../index.html" class="back-btn">⬅ Back to Home</a>
+    </div>
+  </main>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <h3>Video Consultation</h3>
+      <p>Feature under development. For now, call our helpline <strong>+91 9876543210</strong>.</p>
+      <button class="close-btn" onclick="closeModal('videoModal')">Close</button>
+    </div>
+  </div>
+
+  <!-- Chat Modal -->
+  <div id="chatModal" class="modal">
+    <div class="modal-content">
+      <h3>Chat with Doctor</h3>
+      <input type="text" id="chatName" placeholder="Your Name">
+      <textarea id="chatMsg" placeholder="Type your message..."></textarea>
+      <button class="submit-btn" onclick="sendChat()">Send</button>
+      <button class="close-btn" onclick="closeModal('chatModal')">Close</button>
+      <p id="chatResponse" style="margin-top:1rem; color:green; font-weight:bold;"></p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) { document.getElementById(id).style.display = "block"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+
+    function sendChat() {
+      const name = document.getElementById('chatName').value.trim();
+      const msg = document.getElementById('chatMsg').value.trim();
+      if (name && msg) {
+        document.getElementById('chatResponse').innerText = "✅ Thank you " + name + "! Doctor will respond soon.";
+        document.getElementById('chatMsg').value = "";
+      } else {
+        alert("Please enter your name and message.");
+      }
+    }
+  </script>
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function startVideoCall(doctorName) {
+      const domain = "meet.jit.si"; // free Jitsi server
+      const roomName = "Consultation_" + doctorName;
+      const url = `https://${domain}/${roomName}`;
+
+      // Load video call inside iframe fullscreen
+      document.getElementById("videoFrame").src = url;
+      closeModal("videoModal"); // close doctor selection
+      openModal("callModal");   // open fullscreen video call modal
+    }
+
+    function endCall() {
+      document.getElementById("videoFrame").src = ""; // stop video
+      closeModal("callModal");
+    }
+  </script>
+
+
+</body>
+
+</html>

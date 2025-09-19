@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Home Care",
+    "description": "Professional care services at your home.",
+    "page": "service.html?id=1"
+  },
+  {
+    "id": 2,
+    "name": "Virtual Care",
+    "description": "Consult doctors online with video call.",
+    "page": "service.html?id=2"
+  }
+]

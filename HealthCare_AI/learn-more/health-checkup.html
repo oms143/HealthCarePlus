@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Checkup Services</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f9fff9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #2a9d8f, #21867a);
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .lang-switch {
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+    .lang-switch a {
+      color: #fff;
+      text-decoration: underline;
+      margin: 0 5px;
+    }
+    main {
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+    section:hover {
+      transform: translateY(-3px);
+    }
+    h2 {
+      color: #2a9d8f;
+      margin-bottom: 15px;
+      border-left: 4px solid #2a9d8f;
+      padding-left: 10px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin: 6px 0;
+    }
+    a.btn, button.btn {
+      display: inline-block;
+      margin: 10px 5px 0;
+      padding: 10px 15px;
+      background: #2a9d8f;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    a.btn:hover, button.btn:hover {
+      background: #1a5f56;
+    }
+    a {
+      color: #2a9d8f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    details {
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    details summary {
+      font-weight: bold;
+      color: #2a9d8f;
+    }
+    iframe {
+      border-radius: 10px;
+      width: 100%;
+      height: 315px;
+    }
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .package-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      background: #fafffa;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .package-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .package-card h3 {
+      color: #21867a;
+      margin-bottom: 10px;
+    }
+    .package-card ul {
+      padding-left: 18px;
+    }
+    .package-card .price {
+      font-weight: bold;
+      color: #2a9d8f;
+      margin-top: 10px;
+    }
+
+    /* Payment Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .modal-content h3 {
+      margin-top: 0;
+      color: #2a9d8f;
+    }
+    .close {
+      position: absolute;
+      top: 15px; right: 20px;
+      font-size: 1.5rem;
+      color: #333;
+      cursor: pointer;
+    }
+    .payment-options {
+      text-align: left;
+      margin-top: 15px;
+    }
+    .payment-options li {
+      margin: 10px 0;
+      list-style: none;
+    }
+    .payment-options li i {
+      margin-right: 8px;
+      color: #2a9d8f;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🩺 Health Checkup Services</h1>
+    <p>Preventive care with AI-powered reminders and affordable packages for every family.</p>
+    <div class="lang-switch">
+      🌐 Language: 
+      <a href="#">English</a> | 
+      <a href="#">हिन्दी</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Packages -->
+    <section>
+      <h2>💼 Our Health Checkup Packages</h2>
+      <div class="packages">
+        <div class="package-card">
+          <h3>🏡 Basic Health Package</h3>
+          <ul>
+            <li>Blood Pressure & Sugar Check</li>
+            <li>Basic Blood Tests</li>
+            <li>General Doctor Consultation</li>
+          </ul>
+          <p class="price">₹299</p>
+          <button class="btn buy-btn" data-package="Basic Health Package - ₹299">Buy Now</button>
+        </div>
+        <div class="package-card">
+          <h3>👨‍👩‍👧 Family Health Package</h3>
+          <ul>
+            <li>All Basic Tests</li>
+            <li>Thyroid & Cholesterol Check</li>
+            <li>Child Growth & Nutrition Screening</li>
+          </ul>
+          <p class="price">₹699</p>
+          <button class="btn buy-btn" data-package="Family Health Package - ₹699">Buy Now</button>
+        </div>
+        <div class="package-card">
+          <h3>👩 Women’s Health Package</h3>
+          <ul>
+            <li>All Basic Tests</li>
+            <li>Hemoglobin & Anemia Screening</li>
+            <li>Breast & Cervical Cancer Awareness</li>
+          </ul>
+          <p class="price">₹799</p>
+          <button class="btn buy-btn" data-package="Women’s Health Package - ₹799">Buy Now</button>
+        </div>
+        <div class="package-card">
+          <h3>👴 Senior Citizen Package</h3>
+          <ul>
+            <li>Diabetes & Heart Check</li>
+            <li>Kidney & Liver Function Tests</li>
+            <li>Eye & Bone Health Screening</li>
+          </ul>
+          <p class="price">₹999</p>
+          <button class="btn buy-btn" data-package="Senior Citizen Package - ₹999">Buy Now</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Payment Modal -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h3 id="packageTitle">Proceed to Payment</h3>
+      <p>Select a payment method:</p>
+      <ul class="payment-options">
+        <li><i class="fas fa-mobile-alt"></i> UPI / Google Pay / PhonePe</li>
+        <li><i class="fas fa-credit-card"></i> Debit / Credit Card</li>
+        <li><i class="fas fa-wallet"></i> Net Banking</li>
+        <li><i class="fas fa-hand-holding-usd"></i> Cash on Collection</li>
+      </ul>
+      <button class="btn">Proceed</button>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("paymentModal");
+    const closeModal = document.getElementById("closeModal");
+    const packageTitle = document.getElementById("packageTitle");
+
+    document.querySelectorAll(".buy-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const packageName = button.getAttribute("data-package");
+        packageTitle.textContent = "Pay for " + packageName;
+        modal.style.display = "flex";
+      });
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target == modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

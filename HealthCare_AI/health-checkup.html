@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Checkup Packages</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Section Styling */
+    .packages-section {
+      padding: 4rem 0;
+      background-color: #f5faff;
+    }
+
+    .packages-section .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #0d6efd;
+      margin-bottom: 0.5rem;
+    }
+
+    .packages-section .section-subtitle {
+      text-align: center;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+
+    /* Package Card */
+    .package-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .package-card h3 {
+      color: #0d6efd;
+      margin-bottom: 1rem;
+    }
+
+    .package-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .package-card ul li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .package-card ul li::before {
+      content: "✔";
+      color: #0d6efd;
+      position: absolute;
+      left: 0;
+    }
+
+    .package-card .price {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #28a745;
+      margin-bottom: 1rem;
+    }
+
+    .package-card.popular {
+      border: 2px solid #0d6efd;
+      position: relative;
+    }
+
+    .package-card.popular::before {
+      content: "Most Popular";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0d6efd;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 2px 10px;
+      border-radius: 12px;
+    }
+
+    /* Footer */
+    footer {
+      background: #0d6efd;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="bg-primary text-white text-center py-4">
+    <h1>Health Checkup Packages</h1>
+    <p class="mb-0">Affordable Health for Everyone – Right at Your Doorstep</p>
+  </header>
+
+  <!-- Packages Section -->
+  <section class="packages-section" id="packages">
+    <div class="container">
+      <div class="row">
+        <!-- Basic Package -->
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="package-card">
+            <h3>Basic Health Screening</h3>
+            <ul>
+              <li>Blood Pressure & Sugar Test</li>
+              <li>Hemoglobin (Anemia Test)</li>
+              <li>Weight & BMI Check</li>
+              <li>Doctor Consultation</li>
+            </ul>
+            <p class="price">₹299</p>
+            <button class="btn btn-primary book-btn" data-package="Basic Health Screening - ₹299">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Women’s Health -->
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="package-card">
+            <h3>Women’s Health</h3>
+            <ul>
+              <li>Includes Basic Screening</li>
+              <li>Thyroid (T3, T4, TSH)</li>
+              <li>Calcium & Vitamin D Check</li>
+              <li>Gynecology Consultation</li>
+            </ul>
+            <p class="price">₹499</p>
+            <button class="btn btn-primary book-btn" data-package="Women’s Health - ₹499">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Child Health -->
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="package-card">
+            <h3>Child Health</h3>
+            <ul>
+              <li>Height & Weight Growth Chart</li>
+              <li>Immunization Check</li>
+              <li>Vitamin Deficiency Screening</li>
+              <li>Pediatric Consultation</li>
+            </ul>
+            <p class="price">₹399</p>
+            <button class="btn btn-primary book-btn" data-package="Child Health - ₹399">Book Now</button>
+          </div>
+        </div>
+
+        <!-- Family Package -->
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="package-card popular">
+            <h3>Family Package</h3>
+            <ul>
+              <li>Basic Screening for 4 Members</li>
+              <li>Doctor Advice for Family</li>
+              <li>Discount on Medicines</li>
+              <li>Follow-up Guidance</li>
+            </ul>
+            <p class="price">₹999</p>
+            <button class="btn btn-primary book-btn" data-package="Family Package - ₹999">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Modal -->
+  <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentModalLabel">Choose Payment Option</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="selectedPackage" class="fw-bold text-primary"></p>
+          <div class="list-group">
+            <a href="index.html#appointment-form" class="list-group-item list-group-item-action">💵 Pay at Hospital / Camp (Cash)</a>
+            <a href="index.html#appointment-form" class="list-group-item list-group-item-action">📱 UPI Payment</a>
+            <a href="index.html#appointment-form" class="list-group-item list-group-item-action">💳 Card Payment</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rural Health Project. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Handle Book Now clicks
+    document.querySelectorAll('.book-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const packageName = this.getAttribute('data-package');
+        document.getElementById('selectedPackage').textContent = "Selected Package: " + packageName;
+        const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+        paymentModal.show();
+      });
+    });
+  </script>
+</body>
+</html>

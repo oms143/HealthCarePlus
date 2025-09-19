@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uttar Pradesh Health Centers - HealthCare Plus</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body { background: #f9f9f9; font-family: Arial, sans-serif; }
+    .state-page { padding: 2rem; max-width: 1200px; margin: auto; }
+    .state-page h1 { color: #0d6efd; margin-bottom: 1rem; }
+    .hospital-card {
+      background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.2s;
+    }
+    .hospital-card:hover { transform: translateY(-4px); }
+    .hospital-card h3 { color: #0d6efd; margin-bottom: .5rem; }
+    .hospital-card p { margin: .3rem 0; color: #333; }
+    .hospital-card iframe { width: 100%; height: 220px; border-radius: 10px; margin-top: .8rem; border: none; }
+    .district-select { margin: 1rem 0; padding: .5rem; border-radius: 8px; border: 1px solid #ccc; }
+    .btn { display: inline-block; margin-top: .5rem; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; }
+    .btn-primary { background: #0d6efd; color: #fff; }
+    .btn-primary:hover { background: #0b5ed7; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <i class="fas fa-heartbeat"></i>
+          <span>HealthCare Plus</span>
+        </div>
+        <div class="nav-menu">
+          <a href="../index.html">Home</a>
+          <a href="../doctor.html">Find Doctors</a>
+          <a href="../health-checkup.html">Health Checkup</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="state-page">
+    <h1>Uttar Pradesh – Health Centers</h1>
+    <p>Select your district to view nearby hospitals serving rural and village communities in Uttar Pradesh.</p>
+
+    <!-- District Selection -->
+    <label for="district"><strong>Select Your District:</strong></label>
+    <select id="district" class="district-select" onchange="filterHospitals()">
+      <option value="all">All</option>
+      <option value="lucknow">Lucknow</option>
+      <option value="varanasi">Varanasi</option>
+      <option value="kanpur">Kanpur</option>
+      <option value="gorakhpur">Gorakhpur</option>
+      <option value="agra">Agra</option>
+      <option value="meerut">Meerut</option>
+      <option value="allahabad">Allahabad</option>
+      <option value="bareilly">Bareilly</option>
+      <option value="jhansi">Jhansi</option>
+      <option value="ayodhya">Ayodhya</option>
+    </select>
+
+    <!-- Hospitals -->
+    <div id="hospital-list">
+
+      <!-- 1 Lucknow -->
+      <div class="hospital-card" data-district="lucknow">
+        <h3>Lucknow Rural Health Center</h3>
+        <p><strong>Location:</strong> Near Gomti Nagar, Lucknow</p>
+        <p><strong>Contact:</strong> +91 9876543210</p>
+        <p><strong>Doctors:</strong> Dr. Anil Kumar (General), Dr. Priya Singh (Gynecology)</p>
+        <p><strong>Services:</strong> Basic health checkups, maternal care, immunization</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.176..."></iframe>
+      </div>
+
+      <!-- 2 Varanasi -->
+      <div class="hospital-card" data-district="varanasi">
+        <h3>Varanasi Primary Health Center</h3>
+        <p><strong>Location:</strong> Near Lanka Market, Varanasi</p>
+        <p><strong>Contact:</strong> +91 9123456780</p>
+        <p><strong>Doctors:</strong> Dr. Ramesh Sharma (Pediatrics), Nurse Support 24x7</p>
+        <p><strong>Services:</strong> Child health, nutrition support, free medicines</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3562.12..."></iframe>
+      </div>
+
+      <!-- 3 Kanpur -->
+      <div class="hospital-card" data-district="kanpur">
+        <h3>Kanpur Community Hospital</h3>
+        <p><strong>Location:</strong> Barra, Kanpur</p>
+        <p><strong>Contact:</strong> +91 9988776655</p>
+        <p><strong>Doctors:</strong> Dr. Seema Agarwal (Orthopedics), Dr. Rohit Verma (ENT)</p>
+        <p><strong>Services:</strong> Orthopedic care, ENT services, X-ray</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!..."></iframe>
+      </div>
+
+      <!-- 4 Gorakhpur -->
+      <div class="hospital-card" data-district="gorakhpur">
+        <h3>Gorakhpur District Hospital</h3>
+        <p><strong>Location:</strong> Civil Lines, Gorakhpur</p>
+        <p><strong>Contact:</strong> +91 9765432100</p>
+        <p><strong>Doctors:</strong> Dr. Neha Yadav (Medicine), Dr. Ajay Tripathi (Surgery)</p>
+        <p><strong>Services:</strong> General medicine, minor surgeries, diagnostics</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 5 Agra -->
+      <div class="hospital-card" data-district="agra">
+        <h3>Agra Community Health Center</h3>
+        <p><strong>Location:</strong> Near Tajganj, Agra</p>
+        <p><strong>Contact:</strong> +91 9345678910</p>
+        <p><strong>Doctors:</strong> Dr. Sameer Khan (Cardiology), Nurse Staff</p>
+        <p><strong>Services:</strong> Heart checkups, blood pressure monitoring, medicines</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 6 Meerut -->
+      <div class="hospital-card" data-district="meerut">
+        <h3>Meerut Primary Care Hospital</h3>
+        <p><strong>Location:</strong> Shastri Nagar, Meerut</p>
+        <p><strong>Contact:</strong> +91 9234567810</p>
+        <p><strong>Doctors:</strong> Dr. Ritu Sharma (Gynecology), Dr. Pankaj Singh (General)</p>
+        <p><strong>Services:</strong> Maternity, OPD, immunization</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 7 Allahabad -->
+      <div class="hospital-card" data-district="allahabad">
+        <h3>Allahabad City Health Center</h3>
+        <p><strong>Location:</strong> Civil Lines, Prayagraj</p>
+        <p><strong>Contact:</strong> +91 9456781230</p>
+        <p><strong>Doctors:</strong> Dr. Sanjay Gupta (General), Dr. Reena Tiwari (Pediatrics)</p>
+        <p><strong>Services:</strong> Pediatrics, OPD, vaccination drives</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 8 Bareilly -->
+      <div class="hospital-card" data-district="bareilly">
+        <h3>Bareilly Rural Hospital</h3>
+        <p><strong>Location:</strong> Near Izzatnagar, Bareilly</p>
+        <p><strong>Contact:</strong> +91 9341287650</p>
+        <p><strong>Doctors:</strong> Dr. Deepak Sharma (ENT), Dr. Kavita Verma (Gynecology)</p>
+        <p><strong>Services:</strong> ENT, maternity, rural healthcare</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 9 Jhansi -->
+      <div class="hospital-card" data-district="jhansi">
+        <h3>Jhansi District Hospital</h3>
+        <p><strong>Location:</strong> Near Elite Crossing, Jhansi</p>
+        <p><strong>Contact:</strong> +91 9123450987</p>
+        <p><strong>Doctors:</strong> Dr. Manoj Sinha (Orthopedics), Dr. Shalini Mishra (General)</p>
+        <p><strong>Services:</strong> Bone injuries, OPD, diagnostics</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 10 Ayodhya -->
+      <div class="hospital-card" data-district="ayodhya">
+        <h3>Ayodhya Community Health Center</h3>
+        <p><strong>Location:</strong> Near Naya Ghat, Ayodhya</p>
+        <p><strong>Contact:</strong> +91 9876501234</p>
+        <p><strong>Doctors:</strong> Dr. Suresh Yadav (General), Nurse Staff 24x7</p>
+        <p><strong>Services:</strong> Emergency services, OPD, free medicine distribution</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function filterHospitals() {
+      const district = document.getElementById('district').value;
+      const hospitals = document.querySelectorAll('.hospital-card');
+      hospitals.forEach(hospital => {
+        if (district === "all" || hospital.dataset.district === district) {
+          hospital.style.display = "block";
+        } else {
+          hospital.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

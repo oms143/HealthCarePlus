@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Care Services</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f5f9ff;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #0077b6, #0096c7);
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .lang-switch {
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+    .lang-switch a {
+      color: #fff;
+      text-decoration: underline;
+      margin: 0 5px;
+    }
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+    section:hover {
+      transform: translateY(-3px);
+    }
+    h2 {
+      color: #0077b6;
+      margin-bottom: 15px;
+      border-left: 4px solid #0077b6;
+      padding-left: 10px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin: 6px 0;
+    }
+    a.btn {
+      display: inline-block;
+      margin: 10px 5px 0;
+      padding: 10px 15px;
+      background: #0077b6;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    a.btn:hover {
+      background: #023e8a;
+    }
+    a {
+      color: #0077b6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    details {
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    details summary {
+      font-weight: bold;
+      color: #0077b6;
+    }
+    iframe {
+      border-radius: 10px;
+      width: 100%;
+      height: 315px;
+    }
+    p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🏠 Home Care Services</h1>
+    <p>AI-driven healthcare support for rural families — simple, trusted, and accessible.</p>
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+      🌐 Language: 
+      <a href="#">English</a> | 
+      <a href="#">हिन्दी</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Introduction -->
+    <section>
+      <p>
+        Healthcare should not only be available in cities. Our AI-powered Home Care brings
+        trusted medical guidance directly to your home, especially for families in rural areas
+        where hospitals may be far away.
+      </p>
+    </section>
+
+    <!-- Sub-Services -->
+    <section>
+      <h2>Our Home Care Services Include</h2>
+      <ul>
+        <li><strong>Elderly Care:</strong> Daily health monitoring, nutrition advice, fall-prevention tips.</li>
+        <li><strong>Child Care:</strong> Remedies for fever, cough, growth guidance.</li>
+        <li><strong>Maternal Health:</strong> Pregnancy diet, breastfeeding support, safe home practices.</li>
+        <li><strong>Post-Surgery Support:</strong> Wound care, medicine reminders, physiotherapy guidance.</li>
+        <li><strong>Basic Nursing:</strong> Blood pressure, sugar check-up, hygiene care.</li>
+      </ul>
+    </section>
+
+    <!-- AI Role -->
+    <section>
+      <h2>How Our AI Chatbot Helps</h2>
+      <ul>
+        <li>🤖 Gives first-aid and home remedy suggestions instantly.</li>
+        <li>⏰ Reminds patients about medicines and doctor follow-ups.</li>
+        <li>📖 Explains medical terms in simple village language.</li>
+        <li>📱 Works offline (with SMS/IVR in areas with weak internet).</li>
+      </ul>
+      <a href="chatbot.html" class="btn">🤖 Ask the AI Health Assistant</a>
+      <a href="https://wa.me/919876543210?text=Hi%20I%20need%20medical%20help" target="_blank" class="btn">
+        💬 Chat on WhatsApp
+      </a>
+    </section>
+
+    <!-- Remedies -->
+    <section>
+      <h2>Simple Home Remedies</h2>
+      <details>
+        <summary>🤧 Cold & Cough</summary>
+        <p>Boil tulsi (holy basil) with ginger; drink warm twice daily.</p>
+      </details>
+      <details>
+        <summary>🤢 Stomach Pain</summary>
+        <p>Drink warm water with ajwain (carom seeds).</p>
+      </details>
+      <details>
+        <summary>🩸 Minor Cuts</summary>
+        <p>Apply turmeric paste to stop bleeding and prevent infection.</p>
+      </details>
+      <details>
+        <summary>🔥 Burns</summary>
+        <p>Apply aloe vera gel gently for quick healing.</p>
+      </details>
+    </section>
+
+    <!-- Red Flags -->
+    <section>
+      <h2>🚨 When to See a Doctor Immediately</h2>
+      <ul>
+        <li>High fever lasting more than 3 days.</li>
+        <li>Severe chest pain or difficulty breathing.</li>
+        <li>Uncontrolled bleeding or deep wounds.</li>
+        <li>Sudden loss of consciousness.</li>
+      </ul>
+      <a href="tel:108" class="btn">🚑 Call Ambulance (108)</a>
+      <a href="tel:18001801104" class="btn">📞 Health Helpline</a>
+    </section>
+
+    <!-- Awareness -->
+    <section>
+      <h2>🌱 Awareness & Preventive Tips</h2>
+      <p>
+        A healthy lifestyle reduces most diseases. Drink clean boiled water, 
+        wash hands before eating, and add green vegetables to your diet daily.
+      </p>
+      <a href="pdfs/home-remedies-guide.pdf" download class="btn">📥 Download Free Remedies Guide</a>
+    </section>
+
+    <!-- FAQs -->
+    <section>
+      <h2>❓ Frequently Asked Questions</h2>
+      <p><strong>Q:</strong> Can I give honey to my 6-month-old baby for cough? <br>
+         <strong>A:</strong> No. Honey should only be given to children above 1 year old.</p>
+      <p><strong>Q:</strong> Can turmeric really heal wounds? <br>
+         <strong>A:</strong> Yes. It has natural antibacterial properties.</p>
+      <p><strong>Q:</strong> Do I need internet to use chatbot? <br>
+         <strong>A:</strong> Not always. Our SMS/IVR-based AI works in low-network areas.</p>
+    </section>
+
+    <!-- Success Story -->
+    <section>
+      <h2>📖 Village Success Story</h2>
+      <p>
+        In Village Lakshmipur, our chatbot guided an elderly woman with high BP. 
+        She followed simple home checks and avoided an emergency by consulting a doctor in time.
+      </p>
+    </section>
+
+    <!-- Useful Links -->
+    <section>
+      <h2>🌍 Useful Resources</h2>
+      <ul>
+        <li><a href="https://pmjay.gov.in" target="_blank">Ayushman Bharat (PM-JAY)</a></li>
+        <li><a href="https://www.mohfw.gov.in" target="_blank">Ministry of Health & Family Welfare</a></li>
+        <li><a href="https://www.who.int/health-topics" target="_blank">WHO Health Topics</a></li>
+        <li><a href="https://www.google.com/maps/search/hospitals+near+me/" target="_blank">🏥 Find Nearest Hospital</a></li>
+      </ul>
+    </section>
+
+    <!-- Awareness Video -->
+    <section>
+      <h2>🎥 Health Awareness Video</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/5oYV3Dqe0A8?si=uNg1gHJbCfSJWvw3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+  </main>
+</body>
+</html>

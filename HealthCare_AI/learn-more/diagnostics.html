@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnostics Services</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f9fff9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #2a9d8f, #21867a);
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .lang-switch {
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+    .lang-switch a {
+      color: #fff;
+      text-decoration: underline;
+      margin: 0 5px;
+    }
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+    section:hover {
+      transform: translateY(-3px);
+    }
+    h2 {
+      color: #2a9d8f;
+      margin-bottom: 15px;
+      border-left: 4px solid #2a9d8f;
+      padding-left: 10px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin: 6px 0;
+    }
+    a.btn {
+      display: inline-block;
+      margin: 10px 5px 0;
+      padding: 10px 15px;
+      background: #2a9d8f;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    a.btn:hover {
+      background: #1b5e4b;
+    }
+    a {
+      color: #2a9d8f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    details {
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    details summary {
+      font-weight: bold;
+      color: #2a9d8f;
+    }
+    iframe {
+      border-radius: 10px;
+      width: 100%;
+      height: 315px;
+    }
+    p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔬 Diagnostic Services</h1>
+    <p>Accurate, affordable, and AI-supported diagnostic care for rural and urban families.</p>
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+      🌐 Language: 
+      <a href="#">English</a> | 
+      <a href="#">हिन्दी</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Intro -->
+    <section>
+      <p>
+        Early diagnosis saves lives. Our AI-powered Diagnostic Services ensure timely screening, 
+        simple explanations of test results, and connections to affordable labs and hospitals.
+      </p>
+    </section>
+
+    <!-- Services -->
+    <section>
+      <h2>We Offer Diagnostic Support For</h2>
+      <ul>
+        <li><strong>Basic Lab Tests:</strong> Blood, urine, sugar, cholesterol, thyroid.</li>
+        <li><strong>Imaging:</strong> X-ray, ultrasound, CT scan, MRI.</li>
+        <li><strong>Preventive Screenings:</strong> Cancer, TB, heart disease, diabetes.</li>
+        <li><strong>Maternal & Child Tests:</strong> Pregnancy scans, growth tracking.</li>
+        <li><strong>Home Sample Collection:</strong> Lab tests at your doorstep (in select areas).</li>
+      </ul>
+    </section>
+
+    <!-- AI Role -->
+    <section>
+      <h2>How Our AI Chatbot Helps in Diagnostics</h2>
+      <ul>
+        <li>🧪 Suggests which **tests may be required** based on symptoms.</li>
+        <li>📖 Explains medical test reports in **simple language**.</li>
+        <li>📍 Finds the **nearest lab or diagnostic center**.</li>
+        <li>💸 Shares info on **government schemes** that reduce cost.</li>
+      </ul>
+      <a href="chatbot.html" class="btn">🤖 Ask Diagnostic AI</a>
+      <a href="https://wa.me/919876543210?text=I%20need%20diagnostic%20help" target="_blank" class="btn">
+        💬 Chat on WhatsApp
+      </a>
+    </section>
+
+    <!-- Common Tests -->
+    <section>
+      <h2>📋 Common Diagnostic Tests & When To Do Them</h2>
+      <details>
+        <summary>🩸 Blood Sugar Test</summary>
+        <p>Do this every 6 months if you are above 40 or have a family history of diabetes.</p>
+      </details>
+      <details>
+        <summary>❤️ Blood Pressure Check</summary>
+        <p>Once every 3 months for adults, more often if you have hypertension.</p>
+      </details>
+      <details>
+        <summary>🧪 Thyroid Test</summary>
+        <p>If you feel tired, gain weight suddenly, or have irregular periods.</p>
+      </details>
+      <details>
+        <summary>🩺 Chest X-Ray</summary>
+        <p>For chronic cough, TB suspicion, or chest pain.</p>
+      </details>
+      <details>
+        <summary>👶 Pregnancy Ultrasound</summary>
+        <p>At least 3 times during pregnancy — in 1st, 2nd, and 3rd trimester.</p>
+      </details>
+    </section>
+
+    <!-- Preventive Packages -->
+    <section>
+      <h2>🛡️ Preventive Health Checkup Packages</h2>
+      <ul>
+        <li>Basic Package: Blood sugar, BP, cholesterol.</li>
+        <li>Advanced Package: Thyroid, ECG, liver & kidney function.</li>
+        <li>Women’s Health Package: Anemia, thyroid, bone density, cervical screening.</li>
+        <li>Elderly Care Package: Diabetes, heart, kidney, vision, bone strength.</li>
+      </ul>
+    </section>
+
+    <!-- Links -->
+    <section>
+      <h2>🌍 Useful Resources</h2>
+      <ul>
+        <li><a href="https://pmjay.gov.in" target="_blank">Ayushman Bharat (PM-JAY)</a></li>
+        <li><a href="https://www.mohfw.gov.in" target="_blank">Ministry of Health & Family Welfare</a></li>
+        <li><a href="https://www.who.int/health-topics/diagnostic-imaging" target="_blank">WHO – Diagnostics</a></li>
+        <li><a href="https://www.google.com/maps/search/diagnostic+labs+near+me/" target="_blank">🏥 Find Diagnostic Labs Near Me</a></li>
+      </ul>
+    </section>
+
+    <!-- Success Story -->
+    <section>
+      <h2>📖 Real Life Story</h2>
+      <p>
+        In Rampur village, a farmer’s constant tiredness was diagnosed as anemia through our 
+        AI-recommended blood test. With early detection and treatment, he regained his health and avoided major complications.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Specialty Detail</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Inter, Arial, sans-serif; padding: 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .back { margin-bottom: 16px; display:inline-block; }
+    h1 { margin-top: 0; color:#1f2937; }
+    .detail { margin-top: 12px; font-size: 1rem; color:#374151; }
+    .doctors { margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="index.html">⬅ Back to Home</a>
+    <h1 id="specialtyName">Loading...</h1>
+    <div id="specialtyDetail" class="detail"></div>
+    <div id="specialtyExtras" class="doctors"></div>
+  </div>
+
+  <script>
+    (function () {
+      // get id from query string: specialty.html?id=cardio-1
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+
+      if (!id) {
+        document.getElementById('specialtyName').innerText = 'Specialty not specified';
+        document.getElementById('specialtyDetail').innerText = 'No specialty id provided in URL.';
+        return;
+      }
+
+      fetch(`/api/specialty/${encodeURIComponent(id)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (!data.success) {
+            document.getElementById('specialtyName').innerText = 'Specialty not found';
+            document.getElementById('specialtyDetail').innerText = data.message || '';
+            return;
+          }
+          const s = data.specialty;
+          document.getElementById('specialtyName').innerText = s.name;
+          document.getElementById('specialtyDetail').innerText = s.detail || '';
+
+          // If you later add doctors or other info to specialty, show here
+          if (s.doctors && s.doctors.length) {
+            const extras = document.getElementById('specialtyExtras');
+            extras.innerHTML = '<h3>Specialists</h3><ul>' + s.doctors.map(d => `<li>${d}</li>`).join('') + '</ul>';
+          }
+        })
+        .catch(err => {
+          document.getElementById('specialtyName').innerText = 'Error loading specialty';
+          document.getElementById('specialtyDetail').innerText = err.message || String(err);
+        });
+    })();
+  </script>
+</body>
+</html>

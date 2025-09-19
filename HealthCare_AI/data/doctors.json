@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Asha Mehta",
+    "specialty": "Cardiology",
+    "location": "Mumbai",
+    "conditions": ["Heart Disease", "Hypertension"]
+  },
+  {
+    "id": 2,
+    "name": "Dr. Raj Singh",
+    "specialty": "Neurology",
+    "location": "Delhi",
+    "conditions": ["Stroke", "Epilepsy"]
+  }
+]

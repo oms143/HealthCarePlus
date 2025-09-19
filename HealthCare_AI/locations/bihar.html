@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bihar Health Centers - HealthCare Plus</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body { background: #f9f9f9; font-family: Arial, sans-serif; }
+    .state-page { padding: 2rem; max-width: 1200px; margin: auto; }
+    .state-page h1 { color: #0d6efd; margin-bottom: 1rem; }
+    .hospital-card {
+      background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.2s;
+    }
+    .hospital-card:hover { transform: translateY(-4px); }
+    .hospital-card h3 { color: #0d6efd; margin-bottom: .5rem; }
+    .hospital-card p { margin: .3rem 0; color: #333; }
+    .hospital-card iframe { width: 100%; height: 220px; border-radius: 10px; margin-top: .8rem; border: none; }
+    .district-select { margin: 1rem 0; padding: .5rem; border-radius: 8px; border: 1px solid #ccc; }
+    .btn { display: inline-block; margin-top: .5rem; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; }
+    .btn-primary { background: #0d6efd; color: #fff; }
+    .btn-primary:hover { background: #0b5ed7; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <i class="fas fa-heartbeat"></i>
+          <span>HealthCare Plus</span>
+        </div>
+        <div class="nav-menu">
+          <a href="../index.html">Home</a>
+          <a href="../doctor.html">Find Doctors</a>
+          <a href="../health-checkup.html">Health Checkup</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="state-page">
+    <h1>Bihar – Health Centers</h1>
+    <p>Select your district below to view hospitals serving rural and village communities in Bihar.</p>
+
+    <!-- District Selection -->
+    <label for="district"><strong>Select Your District:</strong></label>
+    <select id="district" class="district-select" onchange="filterHospitals()">
+      <option value="all">All</option>
+      <option value="patna">Patna</option>
+      <option value="gaya">Gaya</option>
+      <option value="muzaffarpur">Muzaffarpur</option>
+      <option value="bhagalpur">Bhagalpur</option>
+      <option value="darbhanga">Darbhanga</option>
+      <option value="purnea">Purnea</option>
+      <option value="ara">Ara</option>
+      <option value="nalanda">Nalanda</option>
+      <option value="madhubani">Madhubani</option>
+      <option value="chhapra">Chhapra</option>
+    </select>
+
+    <!-- Hospitals -->
+    <div id="hospital-list">
+
+      <div class="hospital-card" data-district="patna">
+        <h3>Patna Rural Health Center</h3>
+        <p><strong>Location:</strong> Kankarbagh, Patna</p>
+        <p><strong>Contact:</strong> +91 9101234567</p>
+        <p><strong>Doctors:</strong> Dr. Rakesh Singh (General), Dr. Neha Kumari (Gynecology)</p>
+        <p><strong>Services:</strong> Maternal care, diagnostics, free medicines</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      </div>
+
+      <div class="hospital-card" data-district="gaya">
+        <h3>Gaya District Hospital</h3>
+        <p><strong>Location:</strong> Civil Lines, Gaya</p>
+        <p><strong>Contact:</strong> +91 9876001234</p>
+        <p><strong>Doctors:</strong> Dr. Anil Jha (Pediatrics), Dr. Shalini Verma (General Medicine)</p>
+        <p><strong>Services:</strong> Child care, immunization, emergency ward</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      </div>
+
+      <div class="hospital-card" data-district="muzaffarpur">
+        <h3>Muzaffarpur Community Hospital</h3>
+        <p><strong>Location:</strong> Near Motijheel, Muzaffarpur</p>
+        <p><strong>Contact:</strong> +91 9123456789</p>
+        <p><strong>Doctors:</strong> Dr. Ravi Kumar (Orthopedics), Dr. Preeti Sharma (ENT)</p>
+        <p><strong>Services:</strong> Bone care, ENT treatment, outpatient services</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      </div>
+
+      <div class="hospital-card" data-district="bhagalpur">
+        <h3>Bhagalpur Health & Wellness Center</h3>
+        <p><strong>Location:</strong> Tilkamanjhi, Bhagalpur</p>
+        <p><strong>Contact:</strong> +91 9988771122</p>
+        <p><strong>Doctors:</strong> Dr. Sanjay Pandey (Cardiology), Dr. Aarti Mishra (General)</p>
+        <p><strong>Services:</strong> Cardiac care, diagnostics, rural outreach</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      </div>
+
+      <div class="hospital-card" data-district="darbhanga">
+        <h3>Darbhanga Primary Health Center</h3>
+        <p><strong>Location:</strong> Near Tower Chowk, Darbhanga</p>
+        <p><strong>Contact:</strong> +91 7003344556</p>
+        <p><strong>Doctors:</strong> Dr. Pawan Sinha (Dermatology), Dr. Rekha Gupta (General)</p>
+        <p><strong>Services:</strong> Skin care, rural health checkups</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      </div>
+
+      <div class="hospital-card" data-district="purnea">
+        <h3>Purnea District Medical Center</h3>
+        <p><strong>Location:</strong> Line Bazar, Purnea</p>
+        <p><strong>Contact:</strong> +91 7766552211</p>
+        <p><strong>Doctors:</strong> Dr. Alok Verma (General), Dr. Nisha Kumari (Gynecology)</p>
+        <p><strong>Services:</strong> Maternal health, vaccination, diagnostics</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      </div>
+
+      <div class="hospital-card" data-district="ara">
+        <h3>Ara Community Health Center</h3>
+        <p><strong>Location:</strong> Station Road, Ara</p>
+        <p><strong>Contact:</strong> +91 8112233446</p>
+        <p><strong>Doctors:</strong> Dr. Vivek Thakur (ENT), Dr. Sonali Jha (Pediatrics)</p>
+        <p><strong>Services:</strong> Child care, ENT treatment, outpatient services</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      </div>
+
+      <div class="hospital-card" data-district="nalanda">
+        <h3>Nalanda Health Unit</h3>
+        <p><strong>Location:</strong> Bihar Sharif, Nalanda</p>
+        <p><strong>Contact:</strong> +91 9556677880</p>
+        <p><strong>Doctors:</strong> Dr. Ashok Kumar (Neurology), Dr. Pooja Verma (General)</p>
+        <p><strong>Services:</strong> Neurology consultation, rural aid</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      </div>
+
+      <div class="hospital-card" data-district="madhubani">
+        <h3>Madhubani Rural Medical Center</h3>
+        <p><strong>Location:</strong> Jhanjharpur, Madhubani</p>
+        <p><strong>Contact:</strong> +91 8899001122</p>
+        <p><strong>Doctors:</strong> Dr. Kavita Mishra (Gynecology), Dr. Manoj Yadav (General)</p>
+        <p><strong>Services:</strong> Women’s health, maternal care, free medicines</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      </div>
+
+      <div class="hospital-card" data-district="chhapra">
+        <h3>Chhapra District Hospital</h3>
+        <p><strong>Location:</strong> Near Gandhi Chowk, Chhapra</p>
+        <p><strong>Contact:</strong> +91 9122003345</p>
+        <p><strong>Doctors:</strong> Dr. Rajeev Sinha (Orthopedics), Dr. Anjali Kumari (General)</p>
+        <p><strong>Services:</strong> Bone care, diagnostics, emergency</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function filterHospitals() {
+      const district = document.getElementById('district').value;
+      const hospitals = document.querySelectorAll('.hospital-card');
+      hospitals.forEach(hospital => {
+        if (district === "all" || hospital.dataset.district === district) {
+          hospital.style.display = "block";
+        } else {
+          hospital.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

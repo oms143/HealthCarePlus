@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odisha Health Centers - HealthCare Plus</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body { background: #f9f9f9; font-family: Arial, sans-serif; }
+    .state-page { padding: 2rem; max-width: 1200px; margin: auto; }
+    .state-page h1 { color: #0d6efd; margin-bottom: 1rem; }
+    .hospital-card {
+      background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.2s;
+    }
+    .hospital-card:hover { transform: translateY(-4px); }
+    .hospital-card h3 { color: #0d6efd; margin-bottom: .5rem; }
+    .hospital-card p { margin: .3rem 0; color: #333; }
+    .hospital-card iframe { width: 100%; height: 220px; border-radius: 10px; margin-top: .8rem; border: none; }
+    .district-select { margin: 1rem 0; padding: .5rem; border-radius: 8px; border: 1px solid #ccc; }
+    .btn { display: inline-block; margin-top: .5rem; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; }
+    .btn-primary { background: #0d6efd; color: #fff; }
+    .btn-primary:hover { background: #0b5ed7; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <i class="fas fa-heartbeat"></i>
+          <span>HealthCare Plus</span>
+        </div>
+        <div class="nav-menu">
+          <a href="../index.html">Home</a>
+          <a href="../doctor.html">Find Doctors</a>
+          <a href="../health-checkup.html">Health Checkup</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="state-page">
+    <h1>Odisha – Health Centers</h1>
+    <p>Select your district to view nearby hospitals serving rural and village communities in Odisha.</p>
+
+    <!-- District Selection -->
+    <label for="district"><strong>Select Your District:</strong></label>
+    <select id="district" class="district-select" onchange="filterHospitals()">
+      <option value="all">All</option>
+      <option value="bhubaneswar">Bhubaneswar</option>
+      <option value="cuttack">Cuttack</option>
+      <option value="rourkela">Rourkela</option>
+      <option value="berhampur">Berhampur</option>
+      <option value="sambalpur">Sambalpur</option>
+      <option value="balasore">Balasore</option>
+      <option value="puri">Puri</option>
+      <option value="angul">Angul</option>
+      <option value="jeypore">Jeypore</option>
+      <option value="baripada">Baripada</option>
+    </select>
+
+    <!-- Hospitals -->
+    <div id="hospital-list">
+
+      <!-- 1 Bhubaneswar -->
+      <div class="hospital-card" data-district="bhubaneswar">
+        <h3>Bhubaneswar Community Hospital</h3>
+        <p><strong>Location:</strong> CRP Square, Bhubaneswar</p>
+        <p><strong>Contact:</strong> +91 9776001122</p>
+        <p><strong>Doctors:</strong> Dr. S. Mishra (General), Dr. Ananya Das (Pediatrics)</p>
+        <p><strong>Services:</strong> OPD, vaccination, free rural care</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 2 Cuttack -->
+      <div class="hospital-card" data-district="cuttack">
+        <h3>Cuttack Rural Health Center</h3>
+        <p><strong>Location:</strong> Near SCB Medical, Cuttack</p>
+        <p><strong>Contact:</strong> +91 9938223344</p>
+        <p><strong>Doctors:</strong> Dr. P. Patnaik (Gynecology), Dr. Debasis Nayak (ENT)</p>
+        <p><strong>Services:</strong> Maternal health, ENT, rural OPD</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 3 Rourkela -->
+      <div class="hospital-card" data-district="rourkela">
+        <h3>Rourkela District Hospital</h3>
+        <p><strong>Location:</strong> Sector 19, Rourkela</p>
+        <p><strong>Contact:</strong> +91 9344112233</p>
+        <p><strong>Doctors:</strong> Dr. R. Behera (Cardiology), Dr. Priyanka P (General Medicine)</p>
+        <p><strong>Services:</strong> Cardiology, emergency ward, diagnostics</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 4 Berhampur -->
+      <div class="hospital-card" data-district="berhampur">
+        <h3>Berhampur Medical Center</h3>
+        <p><strong>Location:</strong> MKCG Area, Berhampur</p>
+        <p><strong>Contact:</strong> +91 9556677889</p>
+        <p><strong>Doctors:</strong> Dr. B. Rao (Orthopedics), Dr. S. Priya (General Physician)</p>
+        <p><strong>Services:</strong> Bone care, rural OPD, diagnostics</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 5 Sambalpur -->
+      <div class="hospital-card" data-district="sambalpur">
+        <h3>Sambalpur Rural Hospital</h3>
+        <p><strong>Location:</strong> Burla, Sambalpur</p>
+        <p><strong>Contact:</strong> +91 7009988776</p>
+        <p><strong>Doctors:</strong> Dr. L. Sahu (General), Dr. R. Meena (Gynecology)</p>
+        <p><strong>Services:</strong> Women’s health, immunization, OPD</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 6 Balasore -->
+      <div class="hospital-card" data-district="balasore">
+        <h3>Balasore Community Hospital</h3>
+        <p><strong>Location:</strong> Chandipur Road, Balasore</p>
+        <p><strong>Contact:</strong> +91 8112233445</p>
+        <p><strong>Doctors:</strong> Dr. A. Dash (Pediatrics), Dr. Sunita P (General)</p>
+        <p><strong>Services:</strong> Child care, free medicines, OPD</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 7 Puri -->
+      <div class="hospital-card" data-district="puri">
+        <h3>Puri Coastal Health Center</h3>
+        <p><strong>Location:</strong> Near Jagannath Temple, Puri</p>
+        <p><strong>Contact:</strong> +91 9123456780</p>
+        <p><strong>Doctors:</strong> Dr. K. Mohanty (ENT), Dr. R. Tripathy (General Medicine)</p>
+        <p><strong>Services:</strong> ENT, diagnostics, rural OPD</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 8 Angul -->
+      <div class="hospital-card" data-district="angul">
+        <h3>Angul District Hospital</h3>
+        <p><strong>Location:</strong> Near Bus Stand, Angul</p>
+        <p><strong>Contact:</strong> +91 8899776655</p>
+        <p><strong>Doctors:</strong> Dr. Manoj K (Neurology), Dr. Pratima D (General)</p>
+        <p><strong>Services:</strong> Neurology, free checkups, OPD</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 9 Jeypore -->
+      <div class="hospital-card" data-district="jeypore">
+        <h3>Jeypore Rural Medical Aid</h3>
+        <p><strong>Location:</strong> Main Market, Jeypore</p>
+        <p><strong>Contact:</strong> +91 7001122334</p>
+        <p><strong>Doctors:</strong> Dr. R. Kumar (General), Dr. Deepa J (Pediatrics)</p>
+        <p><strong>Services:</strong> General medicine, child care, free medicines</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+      <!-- 10 Baripada -->
+      <div class="hospital-card" data-district="baripada">
+        <h3>Baripada Community Health Center</h3>
+        <p><strong>Location:</strong> Station Road, Baripada</p>
+        <p><strong>Contact:</strong> +91 9556677889</p>
+        <p><strong>Doctors:</strong> Dr. P. Sen (Gynecology), Dr. Arjun M (General)</p>
+        <p><strong>Services:</strong> Women’s health, general OPD, diagnostics</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function filterHospitals() {
+      const district = document.getElementById('district').value;
+      const hospitals = document.querySelectorAll('.hospital-card');
+      hospitals.forEach(hospital => {
+        if (district === "all" || hospital.dataset.district === district) {
+          hospital.style.display = "block";
+        } else {
+          hospital.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

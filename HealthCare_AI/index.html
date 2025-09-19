@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-translate="page-title">HealthCare Plus - Excellence in Medical Care</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+
+        <!-- Logo -->
+        <div class="nav-logo">
+          <i class="fas fa-heartbeat"></i>
+          <span data-translate="logo-text">HealthCare Plus</span>
+        </div>
+
+        <!-- Language Switcher -->
+        <div class="nav-language">
+          <select id="language-switcher" onchange="changeLanguage(this.value)">
+            <option value="en" selected>English</option>
+            <option value="hi">हिन्दी</option>
+          </select>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="nav-menu">
+          <div class="nav-dropdown">
+            <span class="nav-item" data-translate="nav-locations">Locations <i class="fas fa-chevron-down"></i></span>
+            <div class="dropdown-content">
+              <a href="locations/uttar-pradesh.html">Uttar Pradesh</a>
+              <a href="locations/bihar.html">Bihar</a>
+              <a href="locations/tamil-nadu.html">Tamil Nadu</a>
+              <a href="locations/madhya-pradesh.html">Madhya Pradesh</a>
+              <a href="locations/odisha.html">Odisha</a>
+            </div>
+          </div>
+
+          <a href="doctor.html" class="nav-item" data-translate="nav-find-doctors">Find Doctors</a>
+          <a href="#services" class="nav-item" data-translate="nav-services">Services</a>
+          <a href="#appointment-form" class="nav-item" data-translate="nav-book-appointment">Book Appointment</a>
+          <a href="health-checkup.html" class="nav-item" data-translate="nav-health-checkup">Health Checkup</a>
+        </div> <!-- ✅ nav-menu closed properly -->
+
+        <!-- Actions -->
+        <div class="nav-actions">
+          <!-- <button class="btn btn-primary" data-translate="btn-book-appointment">Book Appointment</button> -->
+          <button id="emergencyBtn" class="btn btn-danger" data-translate="btn-emergency">Emergency</button>
+          <button id="logoutBtn" class="btn btn-danger">Logout</button>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2 id="welcomeUser"></h2>
+        <h1 data-translate="hero-title">Excellence in Healthcare</h1>
+        <p data-translate="hero-subtitle">Experience world-class medical care with our team of expert doctors and
+          state-of-the-art facilities. Your health is our priority.</p>
+        <div class="hero-buttons">
+          <a href="#appointment-form" class="btn btn-primary">Book Appointment</a>
+          <a href="hero/virtual-care.html" class="btn btn-secondary">Virtual Care</a>
+        </div>
+
+      </div>
+      <div class="hero-image">
+        <div class="hero-visual">
+          <i class="fas fa-stethoscope"></i>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+<!-- ====== Find Care section (paste where you want it to appear) ====== -->
+<div class="quick-search">
+  <h3 data-translate="find-care">Find Care</h3>
+
+  <div class="search-tabs">
+    <button class="search-tab active" data-tab="doctor" data-translate="tab-find-doctor">Find Doctor</button>
+    <button class="search-tab" data-tab="specialty" data-translate="tab-specialty">Specialty</button>
+    <button class="search-tab" data-tab="condition" data-translate="tab-condition">Condition</button>
+  </div>
+
+  <!-- Doctor Tab -->
+  <div class="search-form tab-content active" id="doctor-tab">
+    <select id="doctorSelect" class="search-input">
+      <option value="">-- Select a Doctor --</option>
+    </select>
+    <button class="btn btn-primary" id="doctorSearchBtn">Search</button>
+  </div>
+
+  <!-- Specialty Tab -->
+  <div class="search-form tab-content" id="specialty-tab">
+    <select id="specialtySelect" class="search-input">
+      <option value="">-- Select a Specialty --</option>
+    </select>
+    <button class="btn btn-primary" id="specialtySearchBtn">Search</button>
+  </div>
+
+  <!-- Condition Tab -->
+  <div class="search-form tab-content" id="condition-tab">
+    <input type="text" id="conditionInput" placeholder="Enter condition (e.g. fever, pregnancy)" />
+    <button class="btn btn-primary" id="conditionSearchBtn">Search</button>
+  </div>
+
+  <!-- Results -->
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<!-- ====== Minimal styles (paste into head or style.css) ====== -->
+<style>
+  .search-tabs { display:flex; gap:8px; margin-bottom:12px; justify-content:center; }
+  .search-tab{ padding:8px 14px; border-radius:6px; border:none; background:#f1f1f1; cursor:pointer; }
+  .search-tab.active{ background:#667eea; color:#fff; }
+  .tab-content{ display:none; text-align:center; margin-bottom:12px; }
+  .tab-content.active{ display:block; }
+  .search-input{ padding:8px; width:70%; max-width:360px; border-radius:6px; border:1px solid #ccc; margin-right:8px; }
+  .btn-primary{ background:#667eea; color:#fff; padding:8px 12px; border-radius:6px; border:none; cursor:pointer; }
+  .search-results{ margin-top:16px; max-width:900px; margin-left:auto; margin-right:auto; }
+  .doctor-card{ background:#fff; padding:12px; margin-bottom:12px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+  .doctor-card h4{ margin:0 0 6px 0; color:#0d6efd; }
+  .doctor-card p{ margin:4px 0; color:#333; }
+</style>
+
+<!-- ====== Script: paste before </body> (or in script.js). Make sure it's run after DOM loads) ====== -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // ====== Data: doctors array ======
+  const doctors = [
+    { name: "Asha Mehta", specialty: "Cardiology", location: "Mumbai", timings: "Mon–Fri, 10 AM – 4 PM", contact: "+91 9876543210", fee: "₹49" },
+    { name: "Raj Singh", specialty: "Neurology", location: "Delhi", timings: "Tue–Sat, 11 AM – 5 PM", contact: "+91 9123456780", fee: "₹99" },
+    { name: "Rajesh Sharma", specialty: "Cardiology", location: "Bangalore", timings: "Mon–Fri, 9 AM – 2 PM", contact: "+91 9876001122", fee: "₹29" },
+    { name: "Priya Patel", specialty: "Neurology", location: "Hyderabad", timings: "Mon–Sat, 12 PM – 6 PM", contact: "+91 9812233445", fee: "₹49" },
+    { name: "Amit Singh", specialty: "Orthopedic", location: "Chennai", timings: "Wed–Sun, 10 AM – 3 PM", contact: "+91 9765432100", fee: "₹99" },
+    { name: "Sunita Gupta", specialty: "Gynecology", location: "Pune", timings: "Mon–Fri, 2 PM – 7 PM", contact: "+91 9933445566", fee: "₹99" },
+    { name: "Vikram Kumar", specialty: "Pediatrics", location: "Kolkata", timings: "Tue–Sat, 9 AM – 1 PM", contact: "+91 9090909090", fee: "₹49" },
+    { name: "Rohit Malhotra", specialty: "Dermatology", location: "Lucknow", timings: "Mon–Fri, 3 PM – 8 PM", contact: "+91 9000001234", fee: "₹29" },
+    { name: "Neha Verma", specialty: "ENT", location: "Jaipur", timings: "Tue–Sat, 10 AM – 4 PM", contact: "+91 9888877777", fee: "₹29" },
+    { name: "Arjun Desai", specialty: "Ophthalmology", location: "Ahmedabad", timings: "Mon–Fri, 11 AM – 5 PM", contact: "+91 9222333444", fee: "₹99" },
+    { name: "Meera Joshi", specialty: "Cardiology", location: "Mumbai", timings: "Mon–Fri, 10 AM – 4 PM", contact: "+91 9876501234", fee: "₹49" },
+    { name: "Suresh Kumar", specialty: "Neurology", location: "Delhi", timings: "Tue–Sat, 11 AM – 5 PM", contact: "+91 9123409876", fee: "₹99" },
+    { name: "Anita Reddy", specialty: "Orthopedic", location: "Chennai", timings: "Wed–Sun, 10 AM – 3 PM", contact: "+91 9765432199", fee: "₹29" },
+    { name: "Rakesh Sharma", specialty: "Dermatology", location: "Bangalore", timings: "Mon–Fri, 9 AM – 2 PM", contact: "+91 9876541100", fee: "₹49" },
+    { name: "Priyanka Singh", specialty: "Gynecology", location: "Pune", timings: "Mon–Fri, 2 PM – 7 PM", contact: "+91 9933445599", fee: "₹99" },
+    { name: "Karan Mehta", specialty: "Pediatrics", location: "Kolkata", timings: "Tue–Sat, 9 AM – 1 PM", contact: "+91 9090909000", fee: "₹69" },
+    { name: "Sonia Kapoor", specialty: "ENT", location: "Jaipur", timings: "Tue–Sat, 10 AM – 4 PM", contact: "+91 9888877700", fee: "₹49" },
+    { name: "Ajay Desai", specialty: "Ophthalmology", location: "Ahmedabad", timings: "Mon–Fri, 11 AM – 5 PM", contact: "+91 9222333000", fee: "₹29" },
+    { name: "Ritu Verma", specialty: "Cardiology", location: "Mumbai", timings: "Mon–Fri, 10 AM – 4 PM", contact: "+91 9876543322", fee: "₹49" },
+    { name: "Deepak Kumar", specialty: "Neurology", location: "Delhi", timings: "Tue–Sat, 11 AM – 5 PM", contact: "+91 9123456700", fee: "₹99" }
+  ];
+
+  // ====== conditionMap: common words -> specialty ======
+  const conditionMap = {
+    "fever": "Pediatrics",
+    "child": "Pediatrics",
+    "kids": "Pediatrics",
+    "pregnancy": "Gynecology",
+    "delivery": "Gynecology",
+    "headache": "Neurology",
+    "epilepsy": "Neurology",
+    "chest pain": "Cardiology",
+    "heart": "Cardiology",
+    "fracture": "Orthopedic",
+    "bone": "Orthopedic",
+    "skin": "Dermatology",
+    "rash": "Dermatology",
+    "ear": "ENT",
+    "nose": "ENT",
+    "throat": "ENT",
+    "eyes": "Ophthalmology",
+    "vision": "Ophthalmology"
+  };
+
+  // ====== DOM references ======
+  const doctorSelect = document.getElementById('doctorSelect');
+  const specialtySelect = document.getElementById('specialtySelect');
+  const doctorSearchBtn = document.getElementById('doctorSearchBtn');
+  const specialtySearchBtn = document.getElementById('specialtySearchBtn');
+  const conditionSearchBtn = document.getElementById('conditionSearchBtn');
+  const conditionInput = document.getElementById('conditionInput');
+  const resultsDiv = document.getElementById('searchResults');
+
+  // ====== populate dropdowns ======
+  (function populate() {
+    doctors.forEach(d => {
+      const o = document.createElement('option'); o.value = d.name; o.textContent = d.name;
+      doctorSelect.appendChild(o);
+    });
+    const uniqueSpecs = [...new Set(doctors.map(d => d.specialty))].sort();
+    uniqueSpecs.forEach(s => {
+      const o = document.createElement('option'); o.value = s; o.textContent = s;
+      specialtySelect.appendChild(o);
+    });
+  })();
+
+  // ====== tab switching: only show the active tab control ======
+  document.querySelectorAll('.search-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      // UI: active tabs
+      document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // show only the selected tab content
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      const id = `${tab.dataset.tab}-tab`;
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active');
+
+      // clear results and inputs on tab change
+      resultsDiv.innerHTML = '';
+      // don't clear selection automatically so user can switch back, but you can add clear logic if wanted
+    });
+  });
+
+  // ====== helper: render result array ======
+  function displayResults(list) {
+    resultsDiv.innerHTML = '';
+    if (!list || list.length === 0) {
+      resultsDiv.innerHTML = '<p>No doctors found.</p>';
+      return;
+    }
+    list.forEach(d => {
+      const card = document.createElement('div');
+      card.className = 'doctor-card';
+      card.innerHTML = `
+        <h4>Dr. ${d.name}</h4>
+        <p><strong>Specialty:</strong> ${d.specialty}</p>
+        <p><strong>Location:</strong> ${d.location}</p>
+        <p><strong>Timings:</strong> ${d.timings}</p>
+        <p><strong>Contact:</strong> <a href="tel:${d.contact.replace(/\s+/g,'')}">${d.contact}</a></p>
+        <p><strong>Fee:</strong> ${d.fee}</p>
+        <a class="btn btn-primary" href="index.html#appointment-form">Book Appointment</a>
+      `;
+      resultsDiv.appendChild(card);
+    });
+  }
+
+  // ====== search handlers ======
+  doctorSearchBtn.addEventListener('click', () => {
+    console.log('Doctor search clicked');
+    const name = doctorSelect.value;
+    if (!name) { resultsDiv.innerHTML = '<p>Please select a doctor.</p>'; return; }
+    const found = doctors.filter(d => d.name === name);
+    displayResults(found);
+  });
+
+  specialtySearchBtn.addEventListener('click', () => {
+    console.log('Specialty search clicked');
+    const spec = specialtySelect.value;
+    if (!spec) { resultsDiv.innerHTML = '<p>Please select a specialty.</p>'; return; }
+    const found = doctors.filter(d => d.specialty === spec);
+    displayResults(found);
+  });
+
+  conditionSearchBtn.addEventListener('click', () => {
+    console.log('Condition search clicked');
+    const q = (conditionInput.value || '').toLowerCase().trim();
+    if (!q) { resultsDiv.innerHTML = '<p>Please type a condition (e.g. fever).</p>'; return; }
+
+    // 1) exact word match from conditionMap (search for any key that is included in q)
+    let matchedSpecialty = null;
+    for (const key in conditionMap) {
+      if (q.indexOf(key) !== -1) { matchedSpecialty = conditionMap[key]; break; }
+    }
+
+    let results = [];
+    if (matchedSpecialty) {
+      console.log('Mapped to specialty:', matchedSpecialty);
+      results = doctors.filter(d => d.specialty.toLowerCase() === matchedSpecialty.toLowerCase());
+    } else {
+      // fallback: try to match by specialty substring or doctor name
+      results = doctors.filter(d =>
+        d.specialty.toLowerCase().includes(q) || d.name.toLowerCase().includes(q)
+      );
+    }
+
+    displayResults(results);
+  });
+
+  // Debug tip: open browser Console (F12) and watch logs when you click Search
+  console.log('Find-care initialized. Try typing "fever", "pregnancy", "heart" in Condition tab.');
+});
+</script>
+
+
+  </section>
+
+<!-- 🔴 Flash News Section -->
+<section class="flash-news">
+  <h2>Flash News</h2>
+  <div class="news-slider">
+    <div class="news-track">
+
+      <!-- Card 1 -->
+      <div class="news-card">
+        <img src="assests/health camp.webp" alt="Free Health Camp">
+        <div class="news-text">
+          🩺 Free Health Camp this Sunday at Village Panchayat Hall.  
+          Get free BP & Sugar checkup. Spread the word!
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="news-card">
+        <img src="assests/vaccine.webp" alt="Vaccination Drive">
+        <div class="news-text">
+          💉 Govt. Vaccination Drive: All children under 5 years must be vaccinated.  
+          Visit your nearest PHC for free vaccines.
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="news-card">
+        <img src="assests/drinking water.webp" alt="Safe Drinking Water">
+        <div class="news-text">
+          🚰 Safe Drinking Water Awareness: Boil water before drinking to prevent stomach diseases in monsoon season.
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="news-card">
+        <img src="assests/women health.webp" alt="Women Health">
+        <div class="news-text">
+          👩‍🍼 Free Checkup for Pregnant Women every Wednesday at Govt. Health Center. Early care saves lives!
+        </div>
+      </div>
+
+      <!-- ✅ New Card 5 (Child Health) -->
+      <div class="news-card">
+        <img src="assests/chil health.webp" alt="Child Nutrition">
+        <div class="news-text">
+          👶 Free Nutrition Supplements for Children under 6 years at Anganwadi Centers.  
+          Ensure your child’s healthy growth and immunity.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <section class="specialties">
+    <div class="container">
+      <h2 data-translate="specialties-title">Our Specialties</h2>
+      <p class="section-subtitle" data-translate="specialties-subtitle">Comprehensive medical care across all
+        specialties</p>
+
+      <div class="specialties-grid">
+        <div class="specialty-card">
+          <div class="specialty-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3 data-translate="cardiac-care">Cardiac Care</h3>
+          <p data-translate="cardiac-care-desc">Advanced heart care with cutting-edge technology</p>
+        </div>
+
+        <div class="specialty-card">
+          <div class="specialty-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3 data-translate="neurosciences">Neurosciences</h3>
+          <p data-translate="neurosciences-desc">Expert neurological care and brain surgery</p>
+        </div>
+
+        <div class="specialty-card">
+          <div class="specialty-icon">
+            <i class="fas fa-ribbon"></i>
+          </div>
+          <h3 data-translate="cancer-care">Cancer Care</h3>
+          <p data-translate="cancer-care-desc">Comprehensive oncology treatment and support</p>
+        </div>
+
+        <div class="specialty-card">
+          <div class="specialty-icon">
+            <i class="fas fa-bone"></i>
+          </div>
+          <h3 data-translate="orthopedics">Orthopedics</h3>
+          <p data-translate="orthopedics-desc">Joint replacement and bone care specialists</p>
+        </div>
+
+        <div class="specialty-card">
+          <div class="specialty-icon">
+            <i class="fas fa-stomach"></i>
+          </div>
+          <h3 data-translate="gastroenterology">Gastroenterology</h3>
+          <p data-translate="gastroenterology-desc">Digestive system care and treatment</p>
+        </div>
+
+        <div class="specialty-card">
+          <div class="specialty-icon">
+            <i class="fas fa-baby"></i>
+          </div>
+          <h3 data-translate="pediatrics">Pediatrics</h3>
+          <p data-translate="pediatrics-desc">Specialized care for children of all ages</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="container">
+      <h2 data-translate="services-title">Our Services</h2>
+      <p class="section-subtitle" data-translate="services-subtitle">Comprehensive healthcare solutions for you and your
+        family</p>
+
+      <div id="servicesList" class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <h3 data-translate="home-care">Home Care</h3>
+          <p data-translate="home-care-desc">Professional medical care in the comfort of your home</p>
+          <a href="learn-more/home-care.html" class="service-link" data-translate="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-video"></i>
+          </div>
+          <h3 data-translate="telemedicine">Telemedicine</h3>
+          <p data-translate="telemedicine-desc">Connect with our doctors virtually from anywhere</p>
+          <a href="learn-more/telemedicine.html" class="service-link" data-translate="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-ambulance"></i>
+          </div>
+          <h3 data-translate="emergency-care">Emergency Care</h3>
+          <p data-translate="emergency-care-desc">24/7 emergency medical services and trauma care</p>
+          <a href="learn-more/emergency-care.html" class="service-link" data-translate="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-pills"></i>
+          </div>
+          <h3 data-translate="pharmacy">Pharmacy</h3>
+          <p data-translate="pharmacy-desc">Reliable medication delivery to your doorstep</p>
+          <a href="learn-more/pharmacy.html" class="service-link" data-translate="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-flask"></i>
+          </div>
+          <h3 data-translate="diagnostics">Diagnostics</h3>
+          <p data-translate="diagnostics-desc">Advanced lab tests and imaging services</p>
+          <a href="learn-more/diagnostics.html" class="service-link" data-translate="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 data-translate="health-checkup">Health Checkup</h3>
+          <p data-translate="health-checkup-desc">Comprehensive health screening packages</p>
+          <a href="learn-more/health-checkup.html" class="service-link" data-translate="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="care-model">
+    <div class="container">
+      <h2 data-translate="model-title">Our Model of Care</h2>
+      <p class="section-subtitle" data-translate="model-subtitle">Five pillars of excellence that define our approach to
+        healthcare</p>
+
+      <div class="care-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">
+            <i class="fas fa-user-md"></i>
+          </div>
+          <h3 data-translate="pillar-talent">Expert Clinical Talent</h3>
+          <p data-translate="pillar-talent-desc">World-class doctors and medical professionals</p>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3 data-translate="pillar-infrastructure">Advanced Infrastructure</h3>
+          <p data-translate="pillar-infrastructure-desc">State-of-the-art medical facilities and equipment</p>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <h3 data-translate="pillar-technology">Latest Technology</h3>
+          <p data-translate="pillar-technology-desc">Cutting-edge medical technology and innovations</p>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3 data-translate="pillar-processes">Quality Processes</h3>
+          <p data-translate="pillar-processes-desc">Systematic and standardized care delivery</p>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3 data-translate="pillar-compassion">Compassionate Care</h3>
+          <p data-translate="pillar-compassion-desc">Patient-centered approach with empathy and trust</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="appointment-form" class="appointment-booking">
+    <div class="container">
+      <h2 data-translate="appointment-title">Book Your Appointment</h2>
+      <p class="section-subtitle" data-translate="appointment-subtitle">Fill in your details to schedule a consultation
+        with our expert doctors</p>
+
+      <h3 data-translate="guest-form-title">Customer Details & Appointment Information</h3>
+      <form class="form-container" id="guest-form-data" action="/api/appointments" method="POST">
+
+        <div class="form-section">
+          <h4 data-translate="personal-info-title"><i class="fas fa-user"></i> Personal Information</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customer-name" data-translate="label-full-name-star">Full Name *</label>
+              <input type="text" id="customer-name" name="fullName" required>
+            </div>
+            <div class="form-group">
+              <label for="customer-age" data-translate="label-age-star">Age *</label>
+              <input type="number" id="customer-age" name="age" min="1" max="120" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customer-email" data-translate="label-email-star">Email Address *</label>
+              <input type="email" id="customer-email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="customer-phone" data-translate="label-phone-star">Phone Number *</label>
+              <input type="tel" id="customer-phone" name="phone" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customer-blood-group" data-translate="label-blood-group">Blood Group</label>
+              <select id="customer-blood-group" name="bloodGroup" data-translate-options="blood-group-options">
+                <option value="" data-translate="select-blood-group">Select Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="customer-gender" data-translate="label-gender">Gender</label>
+              <select id="customer-gender" name="gender" data-translate-options="gender-options">
+                <option value="" data-translate="select-gender">Select Gender</option>
+                <option value="male" data-translate="gender-male">Male</option>
+                <option value="female" data-translate="gender-female">Female</option>
+                <option value="other" data-translate="gender-other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4 data-translate="location-details-title"><i class="fas fa-map-marker-alt"></i> Location & Appointment
+            Details</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customer-location" data-translate="label-location-star">Preferred Location *</label>
+              <select id="customer-location" name="location" required data-translate-options="location-options">
+                <option value="" data-translate="select-location">Select Location</option>
+                <option value="uttar pradesh" data-translate="location-uttar pradesh">Uttar Pradesh</option>
+                <option value="tamil nadu" data-translate="location-tamil nadu">Tamil Nadu</option>
+                <option value="odisha" data-translate="location-odisha">Odisha</option>
+                <option value="madhya pradesh" data-translate="location-madhya pradesh">Madhya Pradesh</option>
+                <option value="bihar" data-translate="location-bihar">Bihar</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="customer-doctor" data-translate="label-specific-doctor">Specific Doctor (Optional)</label>
+              <select id="customer-doctor" name="doctor" data-translate-options="doctor-options">
+                <option value="" data-translate="select-any-doctor">Any Available Doctor</option>
+                <option value="dr-sharma" data-translate="doctor-sharma">Dr. Rajesh Sharma - Cardiologist</option>
+                <option value="dr-patel" data-translate="doctor-patel">Dr. Priya Patel - Neurologist</option>
+                <option value="dr-singh" data-translate="doctor-singh">Dr. Amit Singh - Orthopedic</option>
+                <option value="dr-gupta" data-translate="doctor-gupta">Dr. Sunita Gupta - Gynecologist</option>
+                <option value="dr-kumar" data-translate="doctor-kumar">Dr. Vikram Kumar - Pediatrician</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="appointment-date" data-translate="label-date-star">Preferred Date *</label>
+              <input type="date" id="appointment-date" name="appointmentDate" required>
+            </div>
+            <div class="form-group">
+              <label for="time-slot" data-translate="label-time-slot-star">Time Slot *</label>
+              <select id="time-slot" name="timeSlot" required data-translate-options="time-slot-options">
+                <option value="" data-translate="select-time-slot">Select Time Slot</option>
+                <option value="09:00" data-translate="time-900">09:00 AM - 09:30 AM</option>
+                <option value="09:30" data-translate="time-930">09:30 AM - 10:00 AM</option>
+                <option value="10:00" data-translate="time-1000">10:00 AM - 10:30 AM</option>
+                <option value="10:30" data-translate="time-1030">10:30 AM - 11:00 AM</option>
+                <option value="11:00" data-translate="time-1100">11:00 AM - 11:30 AM</option>
+                <option value="14:00" data-translate="time-1400">02:00 PM - 02:30 PM</option>
+                <option value="14:30" data-translate="time-1430">02:30 PM - 03:00 PM</option>
+                <option value="15:00" data-translate="time-1500">03:00 PM - 03:30 PM</option>
+                <option value="15:30" data-translate="time-1530">03:30 PM - 04:00 PM</option>
+                <option value="16:00" data-translate="time-1600">04:00 PM - 04:30 PM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4 data-translate="medical-info-title"><i class="fas fa-file-medical"></i> Medical Information</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="previous-report" data-translate="label-prev-report">Previous Health Report Number</label>
+              <input type="text" id="previous-report" name="previousReport"
+                data-translate-placeholder="placeholder-report-number" placeholder="Enter report number if available">
+            </div>
+            <div class="form-group">
+              <label for="valid-id" data-translate="label-valid-id-star">Valid ID Number *</label>
+              <input type="text" id="valid-id" name="validId" data-translate-placeholder="placeholder-id-number"
+                placeholder="Aadhar/PAN/Passport Number" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="customer-concern" data-translate="label-concern-star">Brief Information about Your Concern
+              *</label>
+            <textarea id="customer-concern" name="concern" rows="4" data-translate-placeholder="placeholder-concern"
+              placeholder="Please describe your health concern or reason for visit..." required></textarea>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4 data-translate="insurance-info-title"><i class="fas fa-shield-alt"></i> Insurance Information</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="insurance-provider" data-translate="label-insurance-provider">Insurance Provider</label>
+              <select id="insurance-provider" name="insuranceProvider" data-translate-options="insurance-options">
+                <option value="" data-translate="select-insurance-provider">Select Insurance Provider</option>
+                <option value="none" data-translate="insurance-none">No Insurance</option>
+                <option value="lic" data-translate="insurance-lic">LIC India</option>
+                <option value="icici" data-translate="insurance-icici">ICICI Lombard</option>
+                <option value="hdfc" data-translate="insurance-hdfc">HDFC ERGO</option>
+                <option value="bajaj" data-translate="insurance-bajaj">Bajaj Allianz</option>
+                <option value="star" data-translate="insurance-star">Star Health</option>
+                <option value="other" data-translate="insurance-other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="policy-number" data-translate="label-policy-number">Policy Number</label>
+              <input type="text" id="policy-number" name="policyNumber"
+                data-translate-placeholder="placeholder-policy-number" placeholder="Enter policy number if applicable">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-large btn-primary" data-translate="btn-book-appointment-final">
+            <i class="fas fa-calendar-check"></i>
+            Book Appointment
+          </button>
+          <p class="form-disclaimer" data-translate="form-disclaimer">
+            By submitting this form, you agree to our <a href="#" data-translate="link-terms">Terms of Service</a> and
+            <a href="#" data-translate="link-privacy">Privacy Policy</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <i class="fas fa-heartbeat"></i>
+            <span data-translate="logo-text">HealthCare Plus</span>
+          </div>
+          <p data-translate="footer-description">Excellence in healthcare with compassionate care and advanced medical
+            solutions.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4 data-translate="footer-quick-links-title">Quick Links</h4>
+          <ul>
+            <li><a href="#" data-translate="footer-find-doctors">Find Doctors</a></li>
+            <li><a href="#" data-translate="footer-book-appointment">Book Appointment</a></li>
+            <li><a href="#" data-translate="footer-emergency-care">Emergency Care</a></li>
+            <li><a href="#" data-translate="footer-health-checkup">Health Checkup</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4 data-translate="footer-specialties-title">Specialties</h4>
+          <ul>
+            <li><a href="#" data-translate="specialty-cardiology">Cardiology</a></li>
+            <li><a href="#" data-translate="specialty-neurology">Neurology</a></li>
+            <li><a href="#" data-translate="specialty-oncology">Oncology</a></li>
+            <li><a href="#" data-translate="specialty-orthopedics">Orthopedics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4 data-translate="footer-contact-info-title">Contact Info</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+            <p><i class="fas fa-envelope"></i> care@healthcareplus.com</p>
+            <p><i class="fas fa-map-marker-alt"></i>Noida, Uttar Pradesh, India</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-translate="footer-copyright">&copy; 2025 HealthCare Plus. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/09/07/13/20250907133756-H4C7L7CY.js" defer></script>
+
+  <script src="script.js"></script>
+
+  <script>
+    document.getElementById('guest-form-data').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+
+      try {
+        const response = await fetch('/api/appointments', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert('Appointment booked successfully! ID: ' + result.appointmentId);
+          e.target.reset();
+        } else {
+          alert('Error: ' + result.message);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while booking the appointment.');
+      }
+    });
+  </script>
+
+</body>
+
+</html>

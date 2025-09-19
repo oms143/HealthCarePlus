@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "fullName": "Lakshya Srivastav",
+    "email": "lakshyasrivastav14@gmail.com",
+    "password": "Abc@@@54321",
+    "createdAt": "2025-09-17T17:25:37.323Z"
+  },
+  {
+    "id": 2,
+    "fullName": "Samar",
+    "email": "samarmalik5098@gmail.com",
+    "password": "Abc@@@@54321",
+    "createdAt": "2025-09-18T04:17:57.343Z"
+  },
+  {
+    "id": 3,
+    "fullName": "ali",
+    "email": "aliqamar543216@gmail.com",
+    "password": "Abc12345",
+    "createdAt": "2025-09-18T11:42:41.031Z"
+  },
+  {
+    "id": 4,
+    "fullName": "Shivam",
+    "email": "shivamvermaaa00@gmail.com",
+    "password": "Abc@@@54321",
+    "createdAt": "2025-09-18T19:29:01.249Z"
+  },
+  {
+    "id": 5,
+    "fullName": "Ronit2",
+    "email": "ronitverma7904@gmail.com",
+    "password": "1234",
+    "createdAt": "2025-09-18T21:20:14.872Z"
+  }
+]

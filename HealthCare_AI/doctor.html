@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthCare Plus - Our Doctors</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    
+    body {
+  background-color: #ffffff !important;
+}
+
+    .doctor-section {
+  background-color: #ffffff; /* White background for the whole section */
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.doctor-section h2 {
+  font-size: 2rem;
+  color: #0d6efd; /* Bright blue heading */
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.doctor-section p {
+  color: #333; /* Dark text for readability */
+}
+    .doctors-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .doctor-card {
+      background-color: var(--color-white);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .doctor-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid var(--color-primary);
+    }
+
+    .doctor-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--color-primary-dark);
+    }
+
+    .doctor-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .doctor-card .specialty {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .doctor-card .location {
+      font-style: italic;
+      color: var(--color-text-medium);
+    }
+
+    .doctor-card .btn {
+      margin-top: 1rem;
+    }
+
+    .search-container {
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-container input {
+      padding: 0.5rem 1rem;
+      width: 250px;
+    }
+
+    .search-container button {
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <i class="fas fa-heartbeat"></i>
+          <span>HealthCare Plus</span>
+        </div>
+        <div class="nav-menu">
+          <a href="index.html" class="nav-item">Home</a>
+          <a href="index.html#appointment-form" class="nav-item">Book Appointment</a>
+          <a href="health-checkup.html" class="nav-item">Health Checkup</a>
+        </div>
+        <div class="nav-actions">
+          <button id="logoutBtn" class="btn btn-danger">Logout</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="doctors-section">
+      <div class="container">
+        <h2 class="section-title">Our Expert Doctors</h2>
+        <p class="section-subtitle">Find the right specialist for your needs</p>
+
+        <!-- Search by location -->
+        <div class="search-container">
+          <input type="text" id="locationSearch" placeholder="Enter location (e.g., Chennai)">
+          <button id="searchBtn" class="btn btn-primary">Search</button>
+          <button id="resetBtn" class="btn btn-secondary">Reset</button>
+        </div>
+
+        <div id="doctors-list" class="doctors-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"></footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const doctorsListContainer = document.getElementById('doctors-list');
+      const searchBtn = document.getElementById('searchBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const locationSearch = document.getElementById('locationSearch');
+
+      const doctors = [
+        { name: "Asha Mehta", specialty: "Cardiology", location: "Mumbai", timings: "Mon–Fri, 10 AM – 4 PM", contact: "+91 9876543210", fee: "₹800" },
+        { name: "Raj Singh", specialty: "Neurology", location: "Delhi", timings: "Tue–Sat, 11 AM – 5 PM", contact: "+91 9123456780", fee: "₹1000" },
+        { name: "Rajesh Sharma", specialty: "Cardiology", location: "Bangalore", timings: "Mon–Fri, 9 AM – 2 PM", contact: "+91 9876001122", fee: "₹850" },
+        { name: "Priya Patel", specialty: "Neurology", location: "Hyderabad", timings: "Mon–Sat, 12 PM – 6 PM", contact: "+91 9812233445", fee: "₹1200" },
+        { name: "Amit Singh", specialty: "Orthopedic", location: "Chennai", timings: "Wed–Sun, 10 AM – 3 PM", contact: "+91 9765432100", fee: "₹900" },
+        { name: "Sunita Gupta", specialty: "Gynecology", location: "Pune", timings: "Mon–Fri, 2 PM – 7 PM", contact: "+91 9933445566", fee: "₹700" },
+        { name: "Vikram Kumar", specialty: "Pediatrics", location: "Kolkata", timings: "Tue–Sat, 9 AM – 1 PM", contact: "+91 9090909090", fee: "₹650" },
+        { name: "Rohit Malhotra", specialty: "Dermatology", location: "Lucknow", timings: "Mon–Fri, 3 PM – 8 PM", contact: "+91 9000001234", fee: "₹750" },
+        { name: "Neha Verma", specialty: "ENT", location: "Jaipur", timings: "Tue–Sat, 10 AM – 4 PM", contact: "+91 9888877777", fee: "₹600" },
+        { name: "Arjun Desai", specialty: "Ophthalmology", location: "Ahmedabad", timings: "Mon–Fri, 11 AM – 5 PM", contact: "+91 9222333444", fee: "₹950" },
+        { name: "Meera Joshi", specialty: "Cardiology", location: "Mumbai", timings: "Mon–Fri, 10 AM – 4 PM", contact: "+91 9876501234", fee: "₹850" },
+        { name: "Suresh Kumar", specialty: "Neurology", location: "Delhi", timings: "Tue–Sat, 11 AM – 5 PM", contact: "+91 9123409876", fee: "₹1050" },
+        { name: "Anita Reddy", specialty: "Orthopedic", location: "Chennai", timings: "Wed–Sun, 10 AM – 3 PM", contact: "+91 9765432199", fee: "₹900" },
+        { name: "Rakesh Sharma", specialty: "Dermatology", location: "Bangalore", timings: "Mon–Fri, 9 AM – 2 PM", contact: "+91 9876541100", fee: "₹800" },
+        { name: "Priyanka Singh", specialty: "Gynecology", location: "Pune", timings: "Mon–Fri, 2 PM – 7 PM", contact: "+91 9933445599", fee: "₹700" },
+        { name: "Karan Mehta", specialty: "Pediatrics", location: "Kolkata", timings: "Tue–Sat, 9 AM – 1 PM", contact: "+91 9090909000", fee: "₹650" },
+        { name: "Sonia Kapoor", specialty: "ENT", location: "Jaipur", timings: "Tue–Sat, 10 AM – 4 PM", contact: "+91 9888877700", fee: "₹600" },
+        { name: "Ajay Desai", specialty: "Ophthalmology", location: "Ahmedabad", timings: "Mon–Fri, 11 AM – 5 PM", contact: "+91 9222333000", fee: "₹950" },
+        { name: "Ritu Verma", specialty: "Cardiology", location: "Mumbai", timings: "Mon–Fri, 10 AM – 4 PM", contact: "+91 9876543322", fee: "₹800" },
+        { name: "Deepak Kumar", specialty: "Neurology", location: "Delhi", timings: "Tue–Sat, 11 AM – 5 PM", contact: "+91 9123456700", fee: "₹1000" }
+      ];
+
+      function displayDoctors(list) {
+        doctorsListContainer.innerHTML = '';
+        if (list.length === 0) {
+          doctorsListContainer.innerHTML = '<p>No doctors found at this location.</p>';
+          return;
+        }
+        list.forEach(doctor => {
+          const doctorCard = document.createElement('div');
+          doctorCard.className = 'doctor-card';
+          doctorCard.innerHTML = `
+             <img src="OIP.webp" alt="Dr. ${doctor.name}">
+  <h3>Dr. ${doctor.name}</h3>
+  <p class="specialty">${doctor.specialty}</p>
+  <p class="location">Location: ${doctor.location}</p>
+  <p><strong>Timings:</strong> ${doctor.timings}</p>
+  <p><strong>Contact:</strong> ${doctor.contact}</p>
+  <p><strong>Consulting Fee:</strong> ${doctor.fee}</p>
+  <a href="index.html#appointment-form" class="btn btn-primary book-btn" data-doctor="${doctor.name}">Book Appointment</a>
+`;
+          doctorsListContainer.appendChild(doctorCard);
+        });
+      }
+
+      // Initial display
+      displayDoctors(doctors);
+
+      // Search functionality
+      searchBtn.addEventListener('click', () => {
+        const query = locationSearch.value.trim().toLowerCase();
+        const filteredDoctors = doctors.filter(doc => doc.location.toLowerCase() === query);
+        displayDoctors(filteredDoctors);
+      });
+
+      resetBtn.addEventListener('click', () => {
+        locationSearch.value = '';
+        displayDoctors(doctors);
+      });
+
+      // Book Appointment button → prefill doctor name in form
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('book-btn')) {
+          const doctorName = e.target.getAttribute('data-doctor');
+          localStorage.setItem("selectedDoctor", doctorName);
+        }
+      });
+    });
+  </script>
+</body>
+
+</html> 

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madhya Pradesh Health Centers - HealthCare Plus</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body { background: #f9f9f9; font-family: Arial, sans-serif; }
+    .state-page { padding: 2rem; max-width: 1200px; margin: auto; }
+    .state-page h1 { color: #0d6efd; margin-bottom: 1rem; }
+    .hospital-card {
+      background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem; margin-bottom: 1.5rem; transition: transform 0.2s;
+    }
+    .hospital-card:hover { transform: translateY(-4px); }
+    .hospital-card h3 { color: #0d6efd; margin-bottom: .5rem; }
+    .hospital-card p { margin: .3rem 0; color: #333; }
+    .hospital-card iframe { width: 100%; height: 220px; border-radius: 10px; margin-top: .8rem; border: none; }
+    .district-select { margin: 1rem 0; padding: .5rem; border-radius: 8px; border: 1px solid #ccc; }
+    .btn { display: inline-block; margin-top: .5rem; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; }
+    .btn-primary { background: #0d6efd; color: #fff; }
+    .btn-primary:hover { background: #0b5ed7; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <i class="fas fa-heartbeat"></i>
+          <span>HealthCare Plus</span>
+        </div>
+        <div class="nav-menu">
+          <a href="../index.html">Home</a>
+          <a href="../doctor.html">Find Doctors</a>
+          <a href="../health-checkup.html">Health Checkup</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="state-page">
+    <h1>Madhya Pradesh – Health Centers</h1>
+    <p>Select your district to view nearby hospitals serving rural and village communities in Madhya Pradesh.</p>
+
+    <!-- District Selection -->
+    <label for="district"><strong>Select Your District:</strong></label>
+    <select id="district" class="district-select" onchange="filterHospitals()">
+      <option value="all">All</option>
+      <option value="bhopal">Bhopal</option>
+      <option value="indore">Indore</option>
+      <option value="gwalior">Gwalior</option>
+      <option value="jabalpur">Jabalpur</option>
+      <option value="ujjain">Ujjain</option>
+      <option value="sagar">Sagar</option>
+      <option value="rewa">Rewa</option>
+      <option value="satna">Satna</option>
+      <option value="ratlam">Ratlam</option>
+      <option value="chhindwara">Chhindwara</option>
+    </select>
+
+    <!-- Hospitals -->
+    <div id="hospital-list">
+
+      <!-- 1 Bhopal -->
+      <div class="hospital-card" data-district="bhopal">
+        <h3>Bhopal Rural Health Center</h3>
+        <p><strong>Location:</strong> Near New Market, Bhopal</p>
+        <p><strong>Contact:</strong> +91 9876543210</p>
+        <p><strong>Doctors:</strong> Dr. A. Sharma (General), Dr. Pooja S. (Gynecology)</p>
+        <p><strong>Services:</strong> OPD, maternal care, diagnostics</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1883909.6790333856!2d75.88386450000002!3d22.746406549999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39633b31a5ecd869%3A0xdb3c23c67093d2b2!2sRural%20health%20care%20and%20training%20centre%20amaltas%20institute%20of%20medical%20sciences!5e0!3m2!1sen!2sin!4v1758143278108!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- 2 Indore -->
+      <div class="hospital-card" data-district="indore">
+        <h3>Indore Community Hospital</h3>
+        <p><strong>Location:</strong> Vijay Nagar, Indore</p>
+        <p><strong>Contact:</strong> +91 9123456780</p>
+        <p><strong>Doctors:</strong> Dr. Manish T. (Orthopedics), Dr. Seema K. (General Physician)</p>
+        <p><strong>Services:</strong> Bone care, general OPD, emergency ward</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117744.35493958658!2d75.8838645!3d22.746406550000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39631decdbf6d15f%3A0x4239e95c68ea8d80!2sIndore%20city%20hospital!5e0!3m2!1sen!2sin!4v1758143231246!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      <!-- 3 Gwalior -->
+      <div class="hospital-card" data-district="gwalior">
+        <h3>Gwalior District Hospital</h3>
+        <p><strong>Location:</strong> Lashkar, Gwalior</p>
+        <p><strong>Contact:</strong> +91 9988776655</p>
+        <p><strong>Doctors:</strong> Dr. Ravi Gupta (Cardiology), Dr. Priya Meena (General)</p>
+        <p><strong>Services:</strong> Cardiology, rural OPD, emergency</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57282.21851295896!2d78.09338477910157!3d26.192167400000034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3976c5e9494498e3%3A0xb2072197dadd9fc6!2sGovernment%20Hospital!5e0!3m2!1sen!2sin!4v1758143193363!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- 4 Jabalpur -->
+      <div class="hospital-card" data-district="jabalpur">
+        <h3>Jabalpur Medical Center</h3>
+        <p><strong>Location:</strong> Napier Town, Jabalpur</p>
+        <p><strong>Contact:</strong> +91 9344112233</p>
+        <p><strong>Doctors:</strong> Dr. Rekha N. (Pediatrics), Dr. Sanjay K. (ENT)</p>
+        <p><strong>Services:</strong> Child care, ENT, diagnostics</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58691.50282389659!2d79.90111287910159!3d23.162208500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981ae0c1f448c37%3A0x9f31bc59724bf53f!2sJabalpur%20Hospital%20and%20Research%20Centre%20-%20Best%20Hospital%20and%20Medical%20Centre%20in%20Jabalpur!5e0!3m2!1sen!2sin!4v1758143109723!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- 5 Ujjain -->
+      <div class="hospital-card" data-district="ujjain">
+        <h3>Ujjain Community Health Center</h3>
+        <p><strong>Location:</strong> Freeganj, Ujjain</p>
+        <p><strong>Contact:</strong> +91 9556677889</p>
+        <p><strong>Doctors:</strong> Dr. Mohit P. (Dermatology), Dr. Ritu J. (General)</p>
+        <p><strong>Services:</strong> Skin care, general OPD, rural support</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29342.408319131737!2d75.78058795!3d23.177460599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396375754a22669d%3A0x37941082e6dcb00f!2sCommunity%20health%20centre%2Cparwana%20%2CRd%20gardi%20medical%20college!5e0!3m2!1sen!2sin!4v1758143042408!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      <!-- 6 Sagar -->
+      <div class="hospital-card" data-district="sagar">
+        <h3>Government District Hospital</h3>
+        <p><strong>Location:</strong> Vaishali Nagar, Sagar, Madhya Pradesh 470002</p>
+        <p><strong>Contact:</strong> +91 8112233445</p>
+        <p><strong>Doctors:</strong> Dr. Neha V. (General), Dr. Rohit S. (Gynecology)</p>
+        <p><strong>Services:</strong> Maternal care, OPD, rural treatment</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7299.470640490208!2d78.75014509197122!3d23.828009214469784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3978d3fc31194557%3A0x3c4315e56f34ff05!2sGovernment%20District%20Hospital!5e0!3m2!1sen!2sin!4v1758142121753!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- 7 Rewa -->
+      <div class="hospital-card" data-district="rewa">
+        <h3>Rewa Hospital & Research Centre</h3>
+        <p><strong>Location:</strong> University Road, Rewa</p>
+        <p><strong>Contact:</strong> +91 8899776655</p>
+        <p><strong>Doctors:</strong> Dr. Pankaj S. (Cardiology), Dr. Kavita R. (General)</p>
+        <p><strong>Services:</strong> Cardiac care, diagnostics, emergency</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29035.537460382835!2d81.2770093743164!3d24.5393772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39845a3ef15a78ad%3A0x6e62a604af04fb77!2sRewa%20Hospital%20and%20Research%20Centre!5e0!3m2!1sen!2sin!4v1758141992111!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- 8 Satna -->
+      <div class="hospital-card" data-district="satna">
+        <h3>Satna Health Center</h3>
+        <p><strong>Location:</strong> Civil Lines, Satna</p>
+        <p><strong>Contact:</strong> +91 7001122334</p>
+        <p><strong>Doctors:</strong> Dr. Aruna S. (Gynecology), Dr. Manish P. (General)</p>
+        <p><strong>Services:</strong> Women’s health, general OPD, emergency ward</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7535638.716133542!2d75.88386450000002!3d22.746406549999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39847f33bbc05181%3A0x509c7873f5f0d9ef!2sPrimary%20Health%20Center!5e0!3m2!1sen!2sin!4v1758143342173!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- 9 Ratlam -->
+      <div class="hospital-card" data-district="ratlam">
+        <h3>Ratlam District Hospital</h3>
+        <p><strong>Location:</strong> Near Station Road, Ratlam</p>
+        <p><strong>Contact:</strong> +91 9122003344</p>
+        <p><strong>Doctors:</strong> Dr. Dinesh M. (Orthopedics), Dr. Preeti L. (General)</p>
+        <p><strong>Services:</strong> Bone care, OPD, rural services</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d936661.3075556309!2d75.10207399999997!3d23.50251555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3963fbfe1c19168b%3A0x364731f32b74c084!2sRatlam%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1758143402137!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- 10 Chhindwara -->
+      <div class="hospital-card" data-district="chhindwara">
+        <h3>Chhindwara Rural Medical Center</h3>
+        <p><strong>Location:</strong> Near Bus Stand, Chhindwara</p>
+        <p><strong>Contact:</strong> +91 9344556677</p>
+        <p><strong>Doctors:</strong> Dr. Shalini J. (Pediatrics), Dr. Rajiv M. (General)</p>
+        <p><strong>Services:</strong> Child care, general OPD, free medicines</p>
+        <a href="../index.html#appointment-form" class="btn btn-primary">Book Appointment</a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14790.294559808006!2d78.92761996977535!3d22.065899300000012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd5675f8cacde45%3A0xe19a6de6e89105eb!2sChhindwara%20Institute%20of%20Medical%20Sciences!5e0!3m2!1sen!2sin!4v1758143469851!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function filterHospitals() {
+      const district = document.getElementById('district').value;
+      const hospitals = document.querySelectorAll('.hospital-card');
+      hospitals.forEach(hospital => {
+        if (district === "all" || hospital.dataset.district === district) {
+          hospital.style.display = "block";
+        } else {
+          hospital.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
